@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ASTextField_Example' do
+  pod 'ASTextField', :path => '../'
+
+  target 'ASTextField_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
