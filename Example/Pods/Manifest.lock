@@ -1,0 +1,27 @@
+PODS:
+  - ASTextField (0.1.0)
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+
+DEPENDENCIES:
+  - ASTextField (from `../`)
+  - FBSnapshotTestCase (~> 2.1.4)
+
+SPEC REPOS:
+  trunk:
+    - FBSnapshotTestCase
+
+EXTERNAL SOURCES:
+  ASTextField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  ASTextField: 4408a604ffeb00ebb52839f3c6a8da6e90a20e41
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+
+PODFILE CHECKSUM: 0fb9caba36cc25166d718455ba7b3d0a8b86364c
+
+COCOAPODS: 1.9.1

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,11 +18,52 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsK-sA-pdj" customClass="ASTextFieldClassicStyle" customModule="ASTextField">
+                                <rect key="frame" x="16" y="303.5" width="343" height="60"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hBq-MP-n6c"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fb2-nq-Cpt" customClass="ASTextFieldClassicStyle" customModule="ASTextField">
+                                <rect key="frame" x="16" y="235" width="343" height="60"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="EHa-Cw-PsG"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WR4-S7-w73">
+                                <rect key="frame" x="16" y="371" width="343" height="50"/>
+                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JHt-NX-qXt"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fb2-nq-Cpt" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="Ijb-rf-8jV"/>
+                            <constraint firstItem="WR4-S7-w73" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="LUP-1i-9Hz"/>
+                            <constraint firstItem="WR4-S7-w73" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="Se9-lm-Uuf"/>
+                            <constraint firstItem="hsK-sA-pdj" firstAttribute="top" secondItem="fb2-nq-Cpt" secondAttribute="bottom" constant="8.5" id="UZp-70-eHI"/>
+                            <constraint firstItem="hsK-sA-pdj" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="WxI-Xh-0Ki"/>
+                            <constraint firstItem="hsK-sA-pdj" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="enI-LF-Xrq"/>
+                            <constraint firstItem="WR4-S7-w73" firstAttribute="top" secondItem="hsK-sA-pdj" secondAttribute="bottom" constant="7.5" id="gok-1v-EZK"/>
+                            <constraint firstItem="fb2-nq-Cpt" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="hpa-X6-MoB"/>
+                            <constraint firstItem="hsK-sA-pdj" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="klL-tj-oG7"/>
+                            <constraint firstItem="hsK-sA-pdj" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="rq7-JL-cBQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="firstNameTextField" destination="fb2-nq-Cpt" id="gzi-qd-iY6"/>
+                        <outlet property="lastNameTextField" destination="hsK-sA-pdj" id="D7M-0a-gcS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
         </scene>
     </scenes>
 </document>

@@ -1,0 +1,22 @@
+{
+  "name": "ASTextField",
+  "version": "0.1.0",
+  "summary": "A short description of ASTextField.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/amitpstu1@gmail.com/ASTextField",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "amitpstu1@gmail.com": "amitpstu1@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/amitpstu1@gmail.com/ASTextField.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "ASTextField/Classes/**/*"
+}

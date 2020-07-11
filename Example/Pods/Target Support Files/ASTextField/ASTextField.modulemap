@@ -1,0 +1,6 @@
+framework module ASTextField {
+  umbrella header "ASTextField-umbrella.h"
+
+  export *
+  module * { export * }
+}

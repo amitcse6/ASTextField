@@ -42,10 +42,10 @@
 		607FACE51AFB9204008FA782 /* ASTextField_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASTextField_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		7B3D07E7605A0DEE1CA6E7F6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		7B3D07E7605A0DEE1CA6E7F6 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		A4199B64E0CB10FDDA7874C2 /* Pods-ASTextField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASTextField_Example.release.xcconfig"; path = "Target Support Files/Pods-ASTextField_Example/Pods-ASTextField_Example.release.xcconfig"; sourceTree = "<group>"; };
-		C9E045FB355ACA4DD7AE1857 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		CB12792A005939F5A167EE8E /* ASTextField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = ASTextField.podspec; path = ../ASTextField.podspec; sourceTree = "<group>"; };
+		C9E045FB355ACA4DD7AE1857 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		CB12792A005939F5A167EE8E /* ASTextField.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ASTextField.podspec; path = ../ASTextField.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E900F94A760A4FCDE85A468B /* Pods_ASTextField_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASTextField_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -147,7 +147,6 @@
 				5CA3B215E6101515C6B58325 /* Pods-ASTextField_Tests.debug.xcconfig */,
 				00F80509ADFF18E6CC0627A9 /* Pods-ASTextField_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -228,6 +227,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
