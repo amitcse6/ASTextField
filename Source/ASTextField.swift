@@ -162,38 +162,39 @@ extension ASTextField {
     }
     
     @discardableResult
-    func setDelegate(_ delegate: ASTextFieldDelegate) -> ASTextField {
+    public func setDelegate(_ delegate: ASTextFieldDelegate) -> ASTextField {
         self.delegate = delegate
         return self
     }
     
     @discardableResult
-    func setPhomeMask(_ phoneMask: String?) -> ASTextField {
+    public func setPhomeMask(_ phoneMask: String?) -> ASTextField {
+        self.isPhoneTextField = true
         self.phoneMask = phoneMask ?? ""
         return self
     }
     
     @discardableResult
-    func setBordeColor(_ borderColor: UIColor) -> ASTextField {
+    public func setBordeColor(_ borderColor: UIColor) -> ASTextField {
         container?.layer.borderColor = borderColor.cgColor
         return self
     }
     
     @discardableResult
-    func setBordeWidth(_ borderWidth: CGFloat) -> ASTextField {
+    public func setBordeWidth(_ borderWidth: CGFloat) -> ASTextField {
         container?.layer.borderWidth = borderWidth
         return self
     }
     
     @discardableResult
-    func setTintDepth(_ value: CGFloat) -> ASTextField {
+    public func setTintDepth(_ value: CGFloat) -> ASTextField {
         PADDING = value
         setupConstraints()
         return self
     }
     
     @discardableResult
-    func setCornerRadius(_ iscCornerRadius: Bool) -> ASTextField {
+    public func setCornerRadius(_ iscCornerRadius: Bool) -> ASTextField {
         self.iscCornerRadius = iscCornerRadius
         layoutSubviews()
         return self

@@ -13,13 +13,15 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var firstNameTextField: ASTextField!
     @IBOutlet weak var lastNameTextField: ASTextField!
+    @IBOutlet weak var emailTextField: ASTextFieldClassicStyle!
+    @IBOutlet weak var phoneTextField: ASTextFieldClassicStyle!
+    @IBOutlet weak var countryTextField: ASTextFieldClassicStyle!
+    @IBOutlet weak var passwordTextField: ASTextFieldClassicStyle!
+    @IBOutlet weak var confirmPasswordTextField: ASTextFieldClassicStyle!
     
-    //    var firstNameTextField: ASTextField?
-    //    var lastNameTextField: ASTextField?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         firstNameTextField.backgroundColor = .clear
         firstNameTextField
@@ -32,12 +34,47 @@ class ViewController: UIViewController {
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Last Name", true)
+        
+        emailTextField.backgroundColor = .clear
+        emailTextField
+            .setTextColor(.black)
+            .setFont(UIFont.systemFont(ofSize: 15))
+            .setName("Email", true)
+        
+        phoneTextField.backgroundColor = .clear
+        phoneTextField
+            .setTextColor(.black)
+            .setFont(UIFont.systemFont(ofSize: 15))
+            .setName("Phone", true)
+            .setPhomeMask("+XXX (XX) XXXX XXXX")
+        
+        countryTextField.backgroundColor = .clear
+        countryTextField
+            .setTextColor(.black)
+            .setFont(UIFont.systemFont(ofSize: 15))
+            .setName("Country", true)
             .setPhoneTextField(true)
+            
+        
+        
+        passwordTextField.backgroundColor = .clear
+        passwordTextField
+            .setTextColor(.black)
+            .setFont(UIFont.systemFont(ofSize: 15))
+            .setName("Password", true)
+            .setSecureTextEntry(true)
+        
+        
+        confirmPasswordTextField.backgroundColor = .clear
+        confirmPasswordTextField
+            .setTextColor(.black)
+            .setFont(UIFont.systemFont(ofSize: 15))
+            .setName("Confirm Password", true)
+            .setSecureTextEntry(true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 }
