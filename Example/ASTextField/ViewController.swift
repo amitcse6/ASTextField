@@ -32,6 +32,7 @@ class ViewController: UIViewController {
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Last Name", true)
+            .setPhoneTextField(true)
     }
     
     override func didReceiveMemoryWarning() {

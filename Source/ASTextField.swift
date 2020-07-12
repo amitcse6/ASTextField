@@ -17,23 +17,24 @@ public typealias ASTextFieldDropDown = Int
 public typealias ASTextFieldDropDownClosure = (ASTextFieldDropDown, ASTextField) -> Void
 
 public class ASTextField: UIView {
-    public var delegate: ASTextFieldDelegate?
-    internal var index = 0
-    internal var container: UIView?
-    internal var textField: UITextField?
-    internal var errorLabel: UILabel?
-    internal var dropDownIcon: DropDownIcon?
-    internal var textFieldRightConstraint: NSLayoutConstraint?
-    internal var autoResetErrorTarget: AnyObject?
-    internal var autoResetErrorAction: Selector?
-    internal var autoInvalidTarget: AnyObject?
-    internal var autoInvalidAction: Selector?
-    internal var PADDING: CGFloat = 10
-    internal var name: String?
-    internal var isEditable: Bool = true
-    internal var isPhoneTextField: Bool = false
-    internal var iscCornerRadius = true
-    internal var selectionAction: ASTextFieldDropDownClosure?
+    var delegate: ASTextFieldDelegate?
+    var index = 0
+    var container: UIView?
+    var textField: UITextField?
+    var errorLabel: UILabel?
+    var dropDownIcon: DropDownIcon?
+    var textFieldRightConstraint: NSLayoutConstraint?
+    var autoResetErrorTarget: AnyObject?
+    var autoResetErrorAction: Selector?
+    var autoInvalidTarget: AnyObject?
+    var autoInvalidAction: Selector?
+    var PADDING: CGFloat = 10
+    var name: String?
+    var isEditable: Bool = true
+    var isPhoneTextField: Bool = false
+    var iscCornerRadius = true
+    var selectionAction: ASTextFieldDropDownClosure?
+    var phoneMask = "+XXX (XX) XXXX XXXX"
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -110,7 +111,8 @@ extension ASTextField: UITextFieldDelegate {
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         if isPhoneTextField {
-            textField.text = textField.text?.applyPatternOnNumbers()
+            //textField.text = textField.text?.applyPatternOnNumbers()
+            textField.text = textField.text?.format(with: phoneMask)
         }
         _ = autoInvalidTarget?.perform(autoInvalidAction)
     }
@@ -123,6 +125,10 @@ extension ASTextField {
 }
 
 extension ASTextField {
+    public func getDropDownIcon() -> DropDownIcon? { 
+        return dropDownIcon
+    }
+    
     public func getName() -> String? {
         return name
     }
@@ -153,6 +159,18 @@ extension ASTextField {
     
     public func getNormalBorderColor() -> CGColor? {
         return container?.layer.borderColor
+    }
+    
+    @discardableResult
+    func setDelegate(_ delegate: ASTextFieldDelegate) -> ASTextField {
+        self.delegate = delegate
+        return self
+    }
+    
+    @discardableResult
+    func setPhomeMask(_ phoneMask: String?) -> ASTextField {
+        self.phoneMask = phoneMask ?? ""
+        return self
     }
     
     @discardableResult
@@ -218,7 +236,7 @@ extension ASTextField {
         }
         return self
     }
-
+    
     @discardableResult
     public func setAutoEventAll(_ target: AnyObject?, _ isLoadTriggered: Bool? = false) -> ASTextField {
         setAutoResetError(target, isLoadTriggered ?? false)
@@ -282,7 +300,7 @@ extension ASTextField {
     }
 }
 
-class DropDownIcon : UIView {
+public class DropDownIcon : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit(pos: CGPoint(x: 10, y: 10), color: .black)
@@ -316,7 +334,7 @@ class DropDownIcon : UIView {
 }
 
 public class ASTextFieldGestureRecognizer: UITapGestureRecognizer {
-    var firstObject: Any?
+    public var firstObject: Any?
     
     func setFirstObject(_ sender: Any?) {
         self.firstObject = sender
