@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 public class ASTextFieldClassicStyle: ASTextField {
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,7 +45,7 @@ public class ASTextFieldClassicStyle: ASTextField {
         textField?.delegate = self
         textField?.placeholder = "Enter something here."
         textField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-        
+            
         errorLabel = UILabel()
         self.addSubview(self.errorLabel.unsafelyUnwrapped)
         errorLabel?.font = UIFont.systemFont(ofSize: 10)

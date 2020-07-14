@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 @objc public protocol ASTextFieldDelegate {
     @objc optional func textFieldShouldBeginEditing(_ asTextField: ASTextField, _ textField: UITextField)
@@ -115,6 +116,9 @@ extension ASTextField: UITextFieldDelegate {
             textField.text = textField.text?.format(with: phoneMask)
         }
         _ = autoInvalidTarget?.perform(autoInvalidAction)
+    }
+    
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
     }
 }
 
@@ -252,8 +256,11 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setText(_ value: String?) -> ASTextField {
+    public func setText(_ value: String?, _ isCheck: Bool? = false) -> ASTextField {
         textField?.text = value ?? ""
+        if let isCheck = isCheck, isCheck, let textField = textField {
+            textFieldDidChange(textField)
+        }
         return self
     }
     
