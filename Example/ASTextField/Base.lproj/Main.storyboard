@@ -81,6 +81,9 @@
                                                     <constraint firstAttribute="height" constant="60" id="Zhj-A8-qDm"/>
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="submitEvent:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="oI4-nK-e4I"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>

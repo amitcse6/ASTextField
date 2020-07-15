@@ -40,13 +40,15 @@ class ViewController: UIViewController {
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Email", true)
+            .setAlwaysLowercase(true) 
         
         phoneTextField.backgroundColor = .clear
         phoneTextField
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Phone", true)
-            .setPhomeMask("+XXX (XX) XXXX XXXX")
+            .setPhomeMask("+XXX (XX) XXXX XXXX", "+XXXXXXXXXXXXX")
+            .setText("", true)
         
         countryTextField.backgroundColor = .clear
         countryTextField
@@ -77,5 +79,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    @IBAction func submitEvent(_ sender: Any) {
+        print("First Name: \(firstNameTextField.getText())")
+        print("Last Name: \(lastNameTextField.getText())")
+        print("Email: \(emailTextField.getText())")
+        print("Phone: \(phoneTextField.getText())")
+        print("Country: \(countryTextField.getText())")
+        print("Password: \(passwordTextField.getText())")
+    }
 }
 

@@ -35,7 +35,10 @@ public class ASTextField: UIView {
     var isPhoneTextField: Bool = false
     var iscCornerRadius = true
     var selectionAction: ASTextFieldDropDownClosure?
-    var phoneMask = "+XXX (XX) XXXX XXXX"
+    var phoneMask: String? = "+XXX (XX) XXXX XXXX"
+    var phoneMaskRev: String? = "+XXXXXXXXXXXXX"
+    var alwaysLowercase = false
+    var alwaysUppercase = false
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -92,6 +95,13 @@ extension ASTextField {
         dropDownIcon?.addGestureRecognizer(tapGestureRecognizer)
         return self
     }
+    
+    func mobileNumberFormatApply() {
+        if isPhoneTextField, let phoneMask = phoneMask {
+            //textField.text = textField.text?.applyPatternOnNumbers()
+            textField?.text = textField?.text?.format(with: phoneMask)
+        }
+    }
 }
 
 extension ASTextField: UITextFieldDelegate {
@@ -106,15 +116,23 @@ extension ASTextField: UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        //let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        if alwaysLowercase {
+            textField.text = updatedString?.lowercased();
+            textFieldDidChange(textField)
+            return false;
+        }
+        if alwaysUppercase {
+            textField.text = updatedString?.uppercased();
+            textFieldDidChange(textField)
+            return false;
+        }
+        
         return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        if isPhoneTextField {
-            //textField.text = textField.text?.applyPatternOnNumbers()
-            textField.text = textField.text?.format(with: phoneMask)
-        }
+         mobileNumberFormatApply()
         _ = autoInvalidTarget?.perform(autoInvalidAction)
     }
     
@@ -158,7 +176,11 @@ extension ASTextField {
     }
     
     public func getText() -> String {
-        return textField?.text ?? ""
+        if isPhoneTextField, let phoneMaskRev = phoneMaskRev {
+            return textField?.text?.format(with: phoneMaskRev) ?? ""
+        }else {
+            return textField?.text ?? ""
+        }
     }
     
     public func getNormalBorderColor() -> CGColor? {
@@ -172,9 +194,10 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setPhomeMask(_ phoneMask: String?) -> ASTextField {
+    public func setPhomeMask(_ phoneMask: String?, _ phoneMaskRev: String?) -> ASTextField {
         self.isPhoneTextField = true
-        self.phoneMask = phoneMask ?? ""
+        self.phoneMask = phoneMask
+        self.phoneMaskRev = phoneMaskRev
         return self
     }
     
@@ -294,6 +317,25 @@ extension ASTextField {
         textField?.placeholder = (isPlaceholder ?? false) ? "Enter \(name ?? "")" : textField?.placeholder
         return self
     }
+    
+    @discardableResult
+    public func setAutocapitalizationType() -> ASTextField {
+        textField?.autocapitalizationType = .allCharacters
+        return self
+    }
+    
+    @discardableResult
+    public func setAlwaysLowercase(_ alwaysLowercase: Bool) -> ASTextField {
+        self.alwaysLowercase = alwaysLowercase
+        return self
+    }
+    
+    @discardableResult
+    public func setAlwaysUppercase(_ alwaysUppercase: Bool) -> ASTextField {
+        self.alwaysUppercase = alwaysUppercase
+        return self
+    }
+    
     
     @discardableResult
     public func setDisableEditing() -> ASTextField {
