@@ -23,7 +23,7 @@ public class ASTextField: UIView {
     var container: UIView?
     var textField: UITextField?
     var errorLabel: UILabel?
-    var dropDownIcon: DropDownIcon?
+    var dropDownIcon: ASDropDownIcon?
     var textFieldRightConstraint: NSLayoutConstraint?
     var autoResetErrorTarget: AnyObject?
     var autoResetErrorAction: Selector?
@@ -72,27 +72,16 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setDropDown(_ selectionAction: @escaping ASTextFieldDropDownClosure) -> ASTextField {
+    public func setDropDown(_ selectionAction: @escaping ASTextFieldDropDownClosure, _ size: CGSize?, _ color: UIColor?) -> ASTextField {
         self.selectionAction = selectionAction
-        textFieldRightConstraint?.constant = -30
-        let color = UIColor(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
-        dropDownIcon = DropDownIcon(frame: CGRect(x: 0, y: 0, width: 10, height: 15), pos: CGPoint(x: 15, y: 15), color: color)
+        dropDownIcon = ASDropDownIcon(size: size, color: color)
         container?.addSubview(dropDownIcon.unsafelyUnwrapped)
         dropDownIcon?.backgroundColor = .clear
-        dropDownIcon?.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 9.0, *) {
-            dropDownIcon?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: 0).isActive = true
-            dropDownIcon?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -10).isActive = true
-            dropDownIcon?.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: 0).isActive = true
-            dropDownIcon?.widthAnchor.constraint(equalTo: dropDownIcon.unsafelyUnwrapped.heightAnchor, constant: 0).isActive = true
-            dropDownIcon?.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor, constant: 0).isActive = true
-        } else {
-            // Fallback on earlier versions
-        }
         dropDownIcon?.isUserInteractionEnabled = true
         let tapGestureRecognizer = ASTextFieldGestureRecognizer(target: self, action: #selector(dropDownEvent(_:)))
         tapGestureRecognizer.firstObject = nil
         dropDownIcon?.addGestureRecognizer(tapGestureRecognizer)
+        setupConstraints()
         return self
     }
     
@@ -132,7 +121,7 @@ extension ASTextField: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-         mobileNumberFormatApply()
+        mobileNumberFormatApply()
         _ = autoInvalidTarget?.perform(autoInvalidAction)
     }
     
@@ -147,7 +136,7 @@ extension ASTextField {
 }
 
 extension ASTextField {
-    public func getDropDownIcon() -> DropDownIcon? { 
+    public func getDropDownIcon() -> ASDropDownIcon? {
         return dropDownIcon
     }
     
@@ -347,39 +336,6 @@ extension ASTextField {
     public func enableEditing() -> ASTextField {
         isEditable = true
         return self
-    }
-}
-
-public class DropDownIcon : UIView {
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        commonInit(pos: CGPoint(x: 10, y: 10), color: .black)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        commonInit(pos: CGPoint(x: 10, y: 10), color: .black)
-    }
-    
-    init(frame: CGRect, pos: CGPoint, color: UIColor) {
-        super.init(frame: frame)
-        commonInit(pos: pos, color: color)
-    }
-    
-    public func commonInit(pos: CGPoint, color: UIColor) {
-        let size = frame.size
-        let path = CGMutablePath()
-        
-        path.move(to: CGPoint(x: pos.x, y: pos.y))
-        path.addLine(to: CGPoint(x: pos.x + size.width/2, y: pos.y + size.height/2))
-        path.addLine(to: CGPoint(x:pos.x + size.width, y: pos.y + 0))
-        path.addLine(to: CGPoint(x: pos.x, y: pos.y))
-        
-        let shape = CAShapeLayer()
-        shape.path = path
-        shape.fillColor = color.cgColor
-        
-        layer.insertSublayer(shape, at: 0)
     }
 }
 

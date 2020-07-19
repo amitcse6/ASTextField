@@ -20,7 +20,18 @@ extension ASTextField {
             textField?.translatesAutoresizingMaskIntoConstraints = false
             textField?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: PADDING).isActive = true
             textField?.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor, constant: PADDING).isActive = true
-            textFieldRightConstraint = textField?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -PADDING)
+            if let dropDownIcon = dropDownIcon {
+                textFieldRightConstraint = textField?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -(dropDownIcon.getSize().width + PADDING))
+                
+                dropDownIcon.translatesAutoresizingMaskIntoConstraints = false
+                dropDownIcon.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: 0).isActive = true
+                dropDownIcon.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -0).isActive = true
+                dropDownIcon.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: 0).isActive = true
+                dropDownIcon.widthAnchor.constraint(equalTo: dropDownIcon.heightAnchor, constant: 0).isActive = true
+                dropDownIcon.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor, constant: 0).isActive = true
+            }else {
+                textFieldRightConstraint = textField?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -PADDING)
+            }
             textFieldRightConstraint?.isActive = true
             textField?.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor, constant: -PADDING).isActive = true
             
@@ -28,6 +39,8 @@ extension ASTextField {
             errorLabel?.leftAnchor.constraint(equalTo: self.leftAnchor, constant: PADDING).isActive = true
             errorLabel?.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -PADDING).isActive = true
             errorLabel?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 5).isActive = true
+            
+            textFieldRightConstraint = textField?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -PADDING)
         } else {
             // Fallback on earlier versions
         }

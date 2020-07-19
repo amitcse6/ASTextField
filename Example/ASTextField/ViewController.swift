@@ -55,9 +55,10 @@ class ViewController: UIViewController {
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Country", true)
-            .setPhoneTextField(true)
-            
-        
+            .setDropDown({index, object in
+                print("index: \(index)")
+            }, nil, nil)
+            .setText("sadfdsa dsaf dsaf dsaf dsaf dsaf dsf sad sdf dasf dsa fd")
         
         passwordTextField.backgroundColor = .clear
         passwordTextField
