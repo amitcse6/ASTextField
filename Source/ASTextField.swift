@@ -52,7 +52,7 @@ public class ASTextField: UIView {
         // For Reference. It's action is not here
     }
     
-    @objc public func invalidAction() {
+    @objc public func publicValidationHandler() {
         // For Reference. It's action is not here
     }
 }
@@ -246,7 +246,7 @@ extension ASTextField {
         if let action = action {
             self.autoInvalidAction = action
         }else{
-            self.autoInvalidAction = #selector(target?.invalidAction)
+            self.autoInvalidAction = #selector(target?.publicValidationHandler)
         }
         if isLoadTriggered {
             _ = autoInvalidTarget?.perform(autoInvalidAction)

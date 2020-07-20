@@ -58,7 +58,7 @@ class ViewController: UIViewController {
             .setDropDown({index, object in
                 print("index: \(index)")
             }, nil, nil)
-            .setText("sadfdsa dsaf dsaf dsaf dsaf dsaf dsf sad sdf dasf dsa fd")
+            .setText("")
         
         passwordTextField.backgroundColor = .clear
         passwordTextField
