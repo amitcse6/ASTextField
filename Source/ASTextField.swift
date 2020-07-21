@@ -61,6 +61,10 @@ public class ASTextField: UIView {
     @objc public func publicValidationHandler() {
         // For Reference. It's action is not here
     }
+    
+    @objc public func applyForError() {
+         // For Reference. It's action is not here
+    }
 }
 
 extension ASTextField {
@@ -99,8 +103,8 @@ extension ASTextField {
             textField?.text = updatedString?.format(with: phoneMask)
             let newText = textField?.text
             let diff = (newText?.count ?? 0) - (oldText?.count ?? 0)
-            if let selectedRange = selectedRange, diff != 0 {
-                if let newPosition = textField?.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
+            if let selectedRange = selectedRange {
+                if let newPosition = textField?.position(from: selectedRange.start, offset: diff) {
                     textField?.selectedTextRange = textField?.textRange(from: newPosition, to: newPosition)
                 }
             }
@@ -117,8 +121,8 @@ extension ASTextField {
             textField?.text = alwaysUppercase ? updatedString?.uppercased() : alwaysLowercase ? updatedString?.lowercased() : updatedString
             let newText = textField?.text
             let diff = (newText?.count ?? 0) - (oldText?.count ?? 0)
-            if let selectedRange = selectedRange, diff != 0 {
-                if let newPosition = textField?.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
+            if let selectedRange = selectedRange {
+                if let newPosition = textField?.position(from: selectedRange.start, offset: diff) {
                     textField?.selectedTextRange = textField?.textRange(from: newPosition, to: newPosition)
                 }
             }
@@ -150,7 +154,6 @@ extension ASTextField: UITextFieldDelegate {
         let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         if string != "\n" {
             if isPhoneTextField {
-                print("updatedString: \(updatedString)")
                 return mobileNumberFormatApply(updatedString ?? "")
             }
             if alwaysUppercase || alwaysLowercase {
@@ -317,13 +320,14 @@ extension ASTextField {
         return self
     }
     
+    // MARK: - Apply For Error Ignore Init Apply
     @discardableResult
     public func setAutoResetError(_ target: AnyObject?, _ isLoadTriggered: Bool, action: Selector? = nil) -> ASTextField {
         self.autoResetErrorTarget = target
         if let action = action {
             self.autoResetErrorAction = action
         }else{
-            self.autoResetErrorAction = #selector(target?.errorResetAll)
+            self.autoResetErrorAction = #selector(target?.applyForError)
         }
         return self
     }
