@@ -91,27 +91,37 @@ extension ASTextField {
         return self
     }
     
-    func mobileNumberFormatApply() {
+    @discardableResult
+    func mobileNumberFormatApply(_ updatedString: String?) -> Bool {
         if isPhoneTextField, let phoneMask = phoneMask {
-            //textField.text = textField.text?.applyPatternOnNumbers()
-            textField?.text = textField?.text?.format(with: phoneMask)
+            let oldText = textField?.text
+            let selectedRange: UITextRange? = textField?.selectedTextRange
+            textField?.text = updatedString?.format(with: phoneMask)
+            let newText = textField?.text
+            let diff = (newText?.count ?? 0) - (oldText?.count ?? 0)
+            if let selectedRange = selectedRange, diff != 0 {
+                if let newPosition = textField?.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
+                    textField?.selectedTextRange = textField?.textRange(from: newPosition, to: newPosition)
+                }
+            }
+            return false
         }
+        return true
     }
     
     @discardableResult
-    func caseFormatApply(_ textField: UITextField, _ updatedString: String?) -> Bool {
-        let oldText = textField.text
+    func caseFormatApply(_ updatedString: String?) -> Bool {
         if alwaysUppercase || alwaysLowercase {
-            let selectedRange: UITextRange? = textField.selectedTextRange
-            textField.text = alwaysUppercase ? updatedString?.uppercased() : alwaysLowercase ? updatedString?.lowercased() : updatedString
-            let newText = textField.text
+            let oldText = textField?.text
+            let selectedRange: UITextRange? = textField?.selectedTextRange
+            textField?.text = alwaysUppercase ? updatedString?.uppercased() : alwaysLowercase ? updatedString?.lowercased() : updatedString
+            let newText = textField?.text
             let diff = (newText?.count ?? 0) - (oldText?.count ?? 0)
             if let selectedRange = selectedRange, diff != 0 {
-                if let newPosition = textField.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
-                    textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                if let newPosition = textField?.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
+                    textField?.selectedTextRange = textField?.textRange(from: newPosition, to: newPosition)
                 }
             }
-            textFieldDidChange(textField)
             return false
         }
         return true
@@ -134,19 +144,26 @@ extension ASTextField: UITextFieldDelegate {
         _ = autoResetErrorTarget?.perform(autoResetErrorAction)
         delegate?.textFieldDidBeginEditing?(self)
     }
-
+    
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         delegate?.textField?(self, shouldChangeCharactersIn: range, replacementString: string)
         let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         if string != "\n" {
-            return caseFormatApply(textField, updatedString ?? "")
+            if isPhoneTextField {
+                print("updatedString: \(updatedString)")
+                return mobileNumberFormatApply(updatedString ?? "")
+            }
+            if alwaysUppercase || alwaysLowercase {
+                return caseFormatApply(updatedString ?? "")
+            }
         }
         delegate?.textField?(self, changeCharactersIn: range, replacementString: string)
         return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        mobileNumberFormatApply()
+        mobileNumberFormatApply(textField.text)
+        caseFormatApply(textField.text)
         _ = autoInvalidTarget?.perform(autoInvalidAction)
         delegate?.textFieldDidChange?(self)
     }
@@ -343,7 +360,6 @@ extension ASTextField {
         textField?.text = value ?? ""
         if let isCheck = isCheck, isCheck, let textField = textField {
             textFieldDidChange(textField)
-            caseFormatApply(textField, value)
         }
         return self
     }

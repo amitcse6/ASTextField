@@ -42,10 +42,9 @@ class ViewController: UIViewController {
         emailTextField
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Email", true)
+            .setName("Email Address", true)
+            .setText("arif1@gamil.com")
             .setAlwaysLowercase(true)
-            .setText("amitpstu1@gmail.com", true)
-            .setDelegate(self)
         
         phoneTextField.backgroundColor = .clear
         phoneTextField
@@ -65,7 +64,7 @@ class ViewController: UIViewController {
                 print("index: \(index)")
             }, nil, nil)
             .setAlwaysUppercase(true)
-            .setText("Bangladesh", true)
+            .setText("", true)
             .setDelegate(self)
         
         passwordTextField.backgroundColor = .clear
