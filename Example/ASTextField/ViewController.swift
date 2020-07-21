@@ -28,19 +28,24 @@ class ViewController: UIViewController {
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("First Name", true)
+            .setDefaultValue("Amit") 
+            .setDelegate(self)
         
         lastNameTextField.backgroundColor = .clear
         lastNameTextField
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Last Name", true)
+            .setDelegate(self)
         
         emailTextField.backgroundColor = .clear
         emailTextField
             .setTextColor(.black)
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Email", true)
-            .setAlwaysLowercase(true) 
+            .setAlwaysLowercase(true)
+            .setText("amitpstu1@gmail.com", true)
+            .setDelegate(self)
         
         phoneTextField.backgroundColor = .clear
         phoneTextField
@@ -49,6 +54,7 @@ class ViewController: UIViewController {
             .setName("Phone", true)
             .setPhomeMask("+XXX (XX) XXXX XXXX", "+XXXXXXXXXXXXX")
             .setText("", true)
+            .setDelegate(self)
         
         countryTextField.backgroundColor = .clear
         countryTextField
@@ -58,7 +64,9 @@ class ViewController: UIViewController {
             .setDropDown({index, object in
                 print("index: \(index)")
             }, nil, nil)
-            .setText("")
+            .setAlwaysUppercase(true)
+            .setText("Bangladesh", true)
+            .setDelegate(self)
         
         passwordTextField.backgroundColor = .clear
         passwordTextField
@@ -66,6 +74,7 @@ class ViewController: UIViewController {
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Password", true)
             .setSecureTextEntry(true)
+            .setDelegate(self)
         
         
         confirmPasswordTextField.backgroundColor = .clear
@@ -74,6 +83,9 @@ class ViewController: UIViewController {
             .setFont(UIFont.systemFont(ofSize: 15))
             .setName("Confirm Password", true)
             .setSecureTextEntry(true)
+            .setDelegate(self)
+        
+        ASTextField.hideKeyboardWhenTappedAround(view)
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,3 +102,6 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: ASTextFieldDelegate {
+    
+}

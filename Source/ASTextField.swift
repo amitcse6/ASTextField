@@ -10,8 +10,12 @@ import Foundation
 import UIKit
 
 @objc public protocol ASTextFieldDelegate {
-    @objc optional func textFieldShouldBeginEditing(_ asTextField: ASTextField, _ textField: UITextField)
-    @objc optional func textFieldDidBeginEditing(_ asTextField: ASTextField, _ textField: UITextField)
+    @objc optional func textFieldShouldBeginEditing(_ asTextField: ASTextField)
+    @objc optional func textFieldDidBeginEditing(_ asTextField: ASTextField)
+    @objc optional func textField(_ asTextField: ASTextField, shouldChangeCharactersIn range: NSRange, replacementString string: String)
+    @objc optional func textField(_ asTextField: ASTextField, changeCharactersIn range: NSRange, replacementString string: String)
+    @objc optional func textFieldDidChange(_ asTextField: ASTextField)
+    @objc optional func textFieldDidChangeSelection(_ asTextField: ASTextField)
 }
 
 public typealias ASTextFieldDropDown = Int
@@ -39,6 +43,8 @@ public class ASTextField: UIView {
     var phoneMaskRev: String? = "+XXXXXXXXXXXXX"
     var alwaysLowercase = false
     var alwaysUppercase = false
+    var defaultValue: String?
+    var state = [String?]()
     
     public override func layoutSubviews() {
         super.layoutSubviews()
@@ -91,41 +97,62 @@ extension ASTextField {
             textField?.text = textField?.text?.format(with: phoneMask)
         }
     }
+    
+    @discardableResult
+    func caseFormatApply(_ textField: UITextField, _ updatedString: String?) -> Bool {
+        let oldText = textField.text
+        if alwaysUppercase || alwaysLowercase {
+            let selectedRange: UITextRange? = textField.selectedTextRange
+            textField.text = alwaysUppercase ? updatedString?.uppercased() : alwaysLowercase ? updatedString?.lowercased() : updatedString
+            let newText = textField.text
+            let diff = (newText?.count ?? 0) - (oldText?.count ?? 0)
+            if let selectedRange = selectedRange, diff != 0 {
+                if let newPosition = textField.position(from: selectedRange.start, offset: diff>0 ? 1 : -1) {
+                    textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
+                }
+            }
+            textFieldDidChange(textField)
+            return false
+        }
+        return true
+    }
 }
+
+//let startPosition: UITextPosition = textField.beginningOfDocument
+//let endPosition: UITextPosition = textField.endOfDocument
+//let cursorPosition = textField.offset(from: textField.beginningOfDocument, to: selectedRange.start)
+//textField.selectedTextRange = textField.textRange(from: cursorPosition, to: cursorPosition)
+//print("cursorPosition: \(cursorPosition)")
 
 extension ASTextField: UITextFieldDelegate {
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldShouldBeginEditing?(self, textField)
+        delegate?.textFieldShouldBeginEditing?(self)
         return isEditable
     }
     
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        delegate?.textFieldDidBeginEditing?(self, textField)
         _ = autoResetErrorTarget?.perform(autoResetErrorAction)
+        delegate?.textFieldDidBeginEditing?(self)
     }
-    
+
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        delegate?.textField?(self, shouldChangeCharactersIn: range, replacementString: string)
         let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
-        if alwaysLowercase {
-            textField.text = updatedString?.lowercased();
-            textFieldDidChange(textField)
-            return false;
+        if string != "\n" {
+            return caseFormatApply(textField, updatedString ?? "")
         }
-        if alwaysUppercase {
-            textField.text = updatedString?.uppercased();
-            textFieldDidChange(textField)
-            return false;
-        }
-        
+        delegate?.textField?(self, changeCharactersIn: range, replacementString: string)
         return true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         mobileNumberFormatApply()
         _ = autoInvalidTarget?.perform(autoInvalidAction)
+        delegate?.textFieldDidChange?(self)
     }
     
     public func textFieldDidChangeSelection(_ textField: UITextField) {
+        delegate?.textFieldDidChangeSelection?(self)
     }
 }
 
@@ -164,6 +191,18 @@ extension ASTextField {
         return textField
     }
     
+    public func getDefaultValue() -> String? {
+        return defaultValue
+    }
+    
+    public func getNumberOfState() -> Int {
+        return state.count
+    }
+    
+    public func getState() -> [String?] {
+        return state
+    }
+    
     public func getText() -> String {
         if isPhoneTextField, let phoneMaskRev = phoneMaskRev {
             return textField?.text?.format(with: phoneMaskRev) ?? ""
@@ -174,6 +213,38 @@ extension ASTextField {
     
     public func getNormalBorderColor() -> CGColor? {
         return container?.layer.borderColor
+    }
+    
+    @discardableResult
+    public func setStateElement(_ value: String?) -> ASTextField {
+        self.state.append(value)
+        return self
+    }
+    
+    @discardableResult
+    public func removeLastStateElement() -> ASTextField {
+        self.state.removeLast()
+        return self
+    }
+    
+    @discardableResult
+    public func removeStateElement(_ index: Int) -> ASTextField {
+        if index < state.count {
+            self.state.remove(at: index)
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func removeFirstStateElement() -> ASTextField {
+        self.state.removeFirst()
+        return self
+    }
+    
+    @discardableResult
+    public func setState(_ state: [String?]) -> ASTextField {
+        self.state = state
+        return self
     }
     
     @discardableResult
@@ -272,6 +343,7 @@ extension ASTextField {
         textField?.text = value ?? ""
         if let isCheck = isCheck, isCheck, let textField = textField {
             textFieldDidChange(textField)
+            caseFormatApply(textField, value)
         }
         return self
     }
@@ -295,15 +367,21 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setPlaceholder(_ placeholder: String? = nil) -> ASTextField {
-        textField?.placeholder = placeholder ?? name ?? ""
+    public func setDefaultValue(_ defaultValue: String?) -> ASTextField {
+        self.defaultValue = defaultValue
+        return self
+    }
+    
+    @discardableResult
+    public func setPlaceholder(_ placeholder: String? = nil, _ isPlaceholder: Bool? = true) -> ASTextField {
+        textField?.placeholder = (isPlaceholder ?? false) ? (placeholder ?? "") : ""
         return self
     }
     
     @discardableResult
     public func setName(_ name: String?, _ isPlaceholder: Bool? = false) -> ASTextField {
         self.name = name
-        textField?.placeholder = (isPlaceholder ?? false) ? "Enter \(name ?? "")" : textField?.placeholder
+        setPlaceholder(("Enter \(name ?? "")"), isPlaceholder)
         return self
     }
     
@@ -346,6 +424,30 @@ public class ASTextFieldGestureRecognizer: UITapGestureRecognizer {
         self.firstObject = sender
     }
     
+    func getFirstObject() -> Any? {
+        return self.firstObject
+    }
+}
+
+extension ASTextField {
+    @objc public static func hideKeyboardWhenTappedAround(_ view: UIView) {
+        let tapGesture = ASTTapGestureRecognizer(target: ASTextField.self, action: #selector(hideKeyboard(_:)))
+        tapGesture.setFirstObject(view)
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc public static func hideKeyboard(_ sender: ASTTapGestureRecognizer) {
+        if let view = sender.getFirstObject() as? UIView {
+            view.endEditing(true)
+        }
+    }
+}
+
+public class ASTTapGestureRecognizer: UITapGestureRecognizer {
+    var firstObject: Any?
+    func setFirstObject(_ sender: Any?) {
+        self.firstObject = sender
+    }
     func getFirstObject() -> Any? {
         return self.firstObject
     }
