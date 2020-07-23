@@ -63,7 +63,7 @@ public class ASTextField: UIView {
     }
     
     @objc public func applyForError() {
-         // For Reference. It's action is not here
+        // For Reference. It's action is not here
     }
 }
 
@@ -150,18 +150,20 @@ extension ASTextField: UITextFieldDelegate {
     }
     
     public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        var mobileNumberFormat = true
+        var caseFormat = true
         delegate?.textField?(self, shouldChangeCharactersIn: range, replacementString: string)
         let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
         if string != "\n" {
-            if isPhoneTextField {
-                return mobileNumberFormatApply(updatedString ?? "")
-            }
-            if alwaysUppercase || alwaysLowercase {
-                return caseFormatApply(updatedString ?? "")
-            }
+            mobileNumberFormat = mobileNumberFormatApply(updatedString ?? "")
+            caseFormat = caseFormatApply(updatedString ?? "")
         }
         delegate?.textField?(self, changeCharactersIn: range, replacementString: string)
-        return true
+        let what = (mobileNumberFormat && caseFormat)
+        if !what {
+            textFieldDidChange(textField)
+        }
+        return what
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
