@@ -1,14 +1,15 @@
 //
-//  ASTextFieldClassicStyleClassic.swift
-//  superapp
+//  ASTextFieldSection.swift
+//  ASForm_Example
 //
-//  Created by Amit on 30/6/20.
-//  Copyright © 2020 Amit. All rights reserved.
+//  Created by Amit on 18/8/20.
+//  Copyright © 2020 CocoaPods. All rights reserved.
 //
 
 import Foundation
 import UIKit
-public class ASTextFieldClassicStyle: ASTextField {
+
+public class ASTextFieldSection: ASTextField {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -26,33 +27,42 @@ public class ASTextFieldClassicStyle: ASTextField {
     }
     
     public func setup() {
+        type = .section
+        initUIElements()
         setupUIElements()
         setupConstraints()
     }
     
     public func setupUIElements() {
-        container = UIView()
-        addSubview(self.container.unsafelyUnwrapped)
+        // MARK: - Container --->
         container?.layer.rasterizationScale = UIScreen.main.scale
         container?.layer.shouldRasterize = true
         setBordeColor(UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0))
         setBordeWidth(1.0)
+        setCornerRadius(10)
+        // MARK: - Container <---
         
-        textField = UITextField()
-        container?.addSubview(self.textField.unsafelyUnwrapped)
+        // MARK: - TextField --->
         textField?.textColor=UIColor.black
         textField?.textAlignment = .left
         textField?.delegate = self
         textField?.placeholder = "Enter something here."
         textField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        // MARK: - TextField <---
         
-        errorLabel = UILabel()
-        self.addSubview(self.errorLabel.unsafelyUnwrapped)
+        // MARK: - LeftImageView --->
+        leftImageView?.backgroundColor = .clear
+        // MARK: - LeftImageView <---
+        
+        // MARK: - RightImageView --->
+        rightImageView?.backgroundColor = .clear
+        // MARK: - RightImageView <---
+        
+        // MARK: - ErrorLabel --->
         errorLabel?.font = UIFont.systemFont(ofSize: 10)
         errorLabel?.textColor = .red
         errorLabel?.textAlignment = .left
         errorLabel?.text = ""
+        // MARK: - ErrorLabel <---
     }
 }
-
-

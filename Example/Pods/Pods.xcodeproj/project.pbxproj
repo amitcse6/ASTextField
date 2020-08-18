@@ -12,10 +12,25 @@
 		14AD81D52FAD9CF2C065C61FB00C3B4F /* UIImage+Diff.m in Sources */ = {isa = PBXBuildFile; fileRef = 4568279DE47DC3AB91598E1317503995 /* UIImage+Diff.m */; };
 		14C511527597E5846AB2627F791C7D8E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716A9972B9D9103B54DB950893FAF104 /* QuartzCore.framework */; };
 		282243CD24BA360100EAA5BF /* ASTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243C824BA360000EAA5BF /* ASTextField.swift */; };
-		282243CE24BA360100EAA5BF /* ASTextFieldClassicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243C924BA360100EAA5BF /* ASTextFieldClassicStyle.swift */; };
 		282243CF24BA360100EAA5BF /* ASDropDownIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243CA24BA360100EAA5BF /* ASDropDownIcon.swift */; };
 		282243D024BA360100EAA5BF /* ASTextFieldMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243CB24BA360100EAA5BF /* ASTextFieldMath.swift */; };
-		282243D124BA360100EAA5BF /* ASTextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282243CC24BA360100EAA5BF /* ASTextField+Extensions.swift */; };
+		2894437F24EC267C003BB81F /* ASTextField+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894436E24EC2679003BB81F /* ASTextField+Init.swift */; };
+		2894438024EC267C003BB81F /* ASTextField+ExternalLib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894436F24EC267A003BB81F /* ASTextField+ExternalLib.swift */; };
+		2894438124EC267C003BB81F /* ASTextField+Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437024EC267A003BB81F /* ASTextField+Action.swift */; };
+		2894438224EC267C003BB81F /* ASTextField+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437124EC267A003BB81F /* ASTextField+Delegate.swift */; };
+		2894438324EC267C003BB81F /* ASTextField+Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437224EC267A003BB81F /* ASTextField+Constraint.swift */; };
+		2894438424EC267C003BB81F /* ASTextField+Override.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437324EC267A003BB81F /* ASTextField+Override.swift */; };
+		2894438524EC267C003BB81F /* ASTextField+Alias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437424EC267A003BB81F /* ASTextField+Alias.swift */; };
+		2894438624EC267C003BB81F /* ASTextField+Get.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437524EC267A003BB81F /* ASTextField+Get.swift */; };
+		2894438724EC267C003BB81F /* ASTextFieldGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */; };
+		2894438824EC267C003BB81F /* ASTextField+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437724EC267B003BB81F /* ASTextField+Set.swift */; };
+		2894438924EC267C003BB81F /* ASTextField+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437824EC267B003BB81F /* ASTextField+Method.swift */; };
+		2894438A24EC267C003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */; };
+		2894438B24EC267C003BB81F /* ASTextField+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */; };
+		2894438C24EC267C003BB81F /* ASTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437B24EC267B003BB81F /* ASTImageView.swift */; };
+		2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */; };
+		2894438E24EC267C003BB81F /* ASTextFieldSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437D24EC267C003BB81F /* ASTextFieldSection.swift */; };
+		2894438F24EC267C003BB81F /* ASTextFieldAdvance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */; };
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */; };
 		2DF813EB0C0BF60139EAD5ECF6EA2652 /* ASTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAADE5F8D921FE178705CCCFCBB796B /* ASTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36CEEA1B1CA199459750C1D23C6B38EC /* Pods-ASTextField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 790DA7F95B6C6E2A1B6D78ADFD50BF5E /* Pods-ASTextField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -76,11 +91,26 @@
 		235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Compare.m"; path = "FBSnapshotTestCase/Categories/UIImage+Compare.m"; sourceTree = "<group>"; };
 		277B6BE10C665F515606A22FD60C6DCC /* FBSnapshotTestCase.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FBSnapshotTestCase.m; path = FBSnapshotTestCase/FBSnapshotTestCase.m; sourceTree = "<group>"; };
 		282243C824BA360000EAA5BF /* ASTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextField.swift; sourceTree = "<group>"; };
-		282243C924BA360100EAA5BF /* ASTextFieldClassicStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldClassicStyle.swift; sourceTree = "<group>"; };
 		282243CA24BA360100EAA5BF /* ASDropDownIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASDropDownIcon.swift; sourceTree = "<group>"; };
 		282243CB24BA360100EAA5BF /* ASTextFieldMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldMath.swift; sourceTree = "<group>"; };
-		282243CC24BA360100EAA5BF /* ASTextField+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Extensions.swift"; sourceTree = "<group>"; };
 		284833D18C244D2B42966B6EE425AA59 /* UIImage+Snapshot.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Snapshot.h"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.h"; sourceTree = "<group>"; };
+		2894436E24EC2679003BB81F /* ASTextField+Init.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Init.swift"; sourceTree = "<group>"; };
+		2894436F24EC267A003BB81F /* ASTextField+ExternalLib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+ExternalLib.swift"; sourceTree = "<group>"; };
+		2894437024EC267A003BB81F /* ASTextField+Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Action.swift"; sourceTree = "<group>"; };
+		2894437124EC267A003BB81F /* ASTextField+Delegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Delegate.swift"; sourceTree = "<group>"; };
+		2894437224EC267A003BB81F /* ASTextField+Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Constraint.swift"; sourceTree = "<group>"; };
+		2894437324EC267A003BB81F /* ASTextField+Override.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Override.swift"; sourceTree = "<group>"; };
+		2894437424EC267A003BB81F /* ASTextField+Alias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Alias.swift"; sourceTree = "<group>"; };
+		2894437524EC267A003BB81F /* ASTextField+Get.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Get.swift"; sourceTree = "<group>"; };
+		2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldGestureRecognizer.swift; sourceTree = "<group>"; };
+		2894437724EC267B003BB81F /* ASTextField+Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Set.swift"; sourceTree = "<group>"; };
+		2894437824EC267B003BB81F /* ASTextField+Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Method.swift"; sourceTree = "<group>"; };
+		2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldKeyboardTapGestureRecognizer.swift; sourceTree = "<group>"; };
+		2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		2894437B24EC267B003BB81F /* ASTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTImageView.swift; sourceTree = "<group>"; };
+		2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldClassic.swift; sourceTree = "<group>"; };
+		2894437D24EC267C003BB81F /* ASTextFieldSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldSection.swift; sourceTree = "<group>"; };
+		2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldAdvance.swift; sourceTree = "<group>"; };
 		2AF3AF7A124914A7EC3F1F407D42C625 /* ASTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ASTextField.modulemap; sourceTree = "<group>"; };
 		323540375A1F3A59E3359ECAF5EA7871 /* Pods-ASTextField_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ASTextField_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		3448547A75E319AC96D4090982762BD8 /* Pods-ASTextField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ASTextField_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,11 +243,26 @@
 		282243C724BA360000EAA5BF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				2894437024EC267A003BB81F /* ASTextField+Action.swift */,
+				2894437424EC267A003BB81F /* ASTextField+Alias.swift */,
+				2894437224EC267A003BB81F /* ASTextField+Constraint.swift */,
+				2894437124EC267A003BB81F /* ASTextField+Delegate.swift */,
+				2894436F24EC267A003BB81F /* ASTextField+ExternalLib.swift */,
+				2894437524EC267A003BB81F /* ASTextField+Get.swift */,
+				2894436E24EC2679003BB81F /* ASTextField+Init.swift */,
+				2894437824EC267B003BB81F /* ASTextField+Method.swift */,
+				2894437324EC267A003BB81F /* ASTextField+Override.swift */,
+				2894437724EC267B003BB81F /* ASTextField+Set.swift */,
+				2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */,
+				2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */,
+				2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */,
+				2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */,
+				2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */,
+				2894437D24EC267C003BB81F /* ASTextFieldSection.swift */,
+				2894437B24EC267B003BB81F /* ASTImageView.swift */,
 				282243C824BA360000EAA5BF /* ASTextField.swift */,
-				282243C924BA360100EAA5BF /* ASTextFieldClassicStyle.swift */,
 				282243CA24BA360100EAA5BF /* ASDropDownIcon.swift */,
 				282243CB24BA360100EAA5BF /* ASTextFieldMath.swift */,
-				282243CC24BA360100EAA5BF /* ASTextField+Extensions.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -595,12 +640,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				282243CE24BA360100EAA5BF /* ASTextFieldClassicStyle.swift in Sources */,
+				2894438224EC267C003BB81F /* ASTextField+Delegate.swift in Sources */,
+				2894438E24EC267C003BB81F /* ASTextFieldSection.swift in Sources */,
+				2894438424EC267C003BB81F /* ASTextField+Override.swift in Sources */,
+				2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */,
+				2894438A24EC267C003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift in Sources */,
+				2894438B24EC267C003BB81F /* ASTextField+UITextFieldDelegate.swift in Sources */,
+				2894438524EC267C003BB81F /* ASTextField+Alias.swift in Sources */,
+				2894438324EC267C003BB81F /* ASTextField+Constraint.swift in Sources */,
+				2894437F24EC267C003BB81F /* ASTextField+Init.swift in Sources */,
 				282243CD24BA360100EAA5BF /* ASTextField.swift in Sources */,
 				97AF5983CD3443E4C354668552145A36 /* ASTextField-dummy.m in Sources */,
+				2894438124EC267C003BB81F /* ASTextField+Action.swift in Sources */,
+				2894438924EC267C003BB81F /* ASTextField+Method.swift in Sources */,
+				2894438824EC267C003BB81F /* ASTextField+Set.swift in Sources */,
+				2894438624EC267C003BB81F /* ASTextField+Get.swift in Sources */,
 				282243D024BA360100EAA5BF /* ASTextFieldMath.swift in Sources */,
+				2894438024EC267C003BB81F /* ASTextField+ExternalLib.swift in Sources */,
+				2894438C24EC267C003BB81F /* ASTImageView.swift in Sources */,
+				2894438F24EC267C003BB81F /* ASTextFieldAdvance.swift in Sources */,
+				2894438724EC267C003BB81F /* ASTextFieldGestureRecognizer.swift in Sources */,
 				282243CF24BA360100EAA5BF /* ASDropDownIcon.swift in Sources */,
-				282243D124BA360100EAA5BF /* ASTextField+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 public class ASDropDownIcon : UIView {
+    public var isActive = false
     var container: UIView?
     var size: CGSize = CGSize.zero
     var color: UIColor = .black
@@ -24,8 +25,14 @@ public class ASDropDownIcon : UIView {
         setup()
     }
     
-    init(size: CGSize?, color: UIColor?) {
+    init() {
         super.init(frame: CGRect.zero)
+        setup()
+    }
+    
+    init(size: CGSize?, color: UIColor?, isActive: Bool) {
+        super.init(frame: CGRect.zero)
+        self.isActive = isActive
         self.size = size ?? CGSize(width: 30, height: 30)
         self.color = color ?? UIColor(red: 150.0/255.0, green: 150.0/255.0, blue: 150.0/255.0, alpha: 1.0)
         setup()

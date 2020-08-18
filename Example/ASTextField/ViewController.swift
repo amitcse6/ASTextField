@@ -11,13 +11,13 @@ import ASTextField
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var firstNameTextField: ASTextField!
-    @IBOutlet weak var lastNameTextField: ASTextField!
-    @IBOutlet weak var emailTextField: ASTextFieldClassicStyle!
-    @IBOutlet weak var phoneTextField: ASTextFieldClassicStyle!
-    @IBOutlet weak var countryTextField: ASTextFieldClassicStyle!
-    @IBOutlet weak var passwordTextField: ASTextFieldClassicStyle!
-    @IBOutlet weak var confirmPasswordTextField: ASTextFieldClassicStyle!
+    @IBOutlet weak var firstNameTextField: ASTextFieldClassic!
+    @IBOutlet weak var lastNameTextField: ASTextFieldClassic!
+    @IBOutlet weak var emailTextField: ASTextFieldClassic!
+    @IBOutlet weak var phoneTextField: ASTextFieldClassic!
+    @IBOutlet weak var countryTextField: ASTextFieldClassic!
+    @IBOutlet weak var passwordTextField: ASTextFieldClassic!
+    @IBOutlet weak var confirmPasswordTextField: ASTextFieldClassic!
     
     
     override func viewDidLoad() {
@@ -30,6 +30,7 @@ class ViewController: UIViewController {
             .setName("First Name", true)
             .setDefaultValue("Amit") 
             .setDelegate(self)
+            .setTitle(nil)
         
         lastNameTextField.backgroundColor = .clear
         lastNameTextField
