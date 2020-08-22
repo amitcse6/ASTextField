@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class ASTextFieldKeyboardTapGestureRecognizer: UITapGestureRecognizer {
+public class ASTKeyboardGesture: UITapGestureRecognizer {
     var firstObject: Any?
     func setFirstObject(_ sender: Any?) {
         self.firstObject = sender

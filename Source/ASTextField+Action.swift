@@ -11,26 +11,14 @@ import UIKit
 
 extension ASTextField {
     @objc public static func hideKeyboardWhenTappedAround(_ view: UIView) {
-        let tapGesture = ASTextFieldKeyboardTapGestureRecognizer(target: ASTextField.self, action: #selector(hideKeyboard(_:)))
+        let tapGesture = ASTKeyboardGesture(target: ASTextField.self, action: #selector(hideKeyboard(_:)))
         tapGesture.setFirstObject(view)
         view.addGestureRecognizer(tapGesture)
     }
     
-    @objc public static func hideKeyboard(_ sender: ASTextFieldKeyboardTapGestureRecognizer) {
+    @objc public static func hideKeyboard(_ sender: ASTKeyboardGesture) {
         if let view = sender.getFirstObject() as? UIView {
             view.endEditing(true)
         }
-    }
-    
-    @objc public func dropDownEvent(_ sender: ASTextFieldGestureRecognizer? = nil) {
-        dropDownClosure?(index, self)
-    }
-    
-    @objc public func leftIconEvent(_ sender: ASTextFieldGestureRecognizer? = nil) {
-        leftIconClosure?(self, leftImageView)
-    }
-    
-    @objc public func rightIconEvent(_ sender: ASTextFieldGestureRecognizer? = nil) {
-        rightIconClosure?(self, rightImageView)
     }
 }

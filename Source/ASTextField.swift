@@ -29,7 +29,11 @@ public class ASTextField: UIView {
     // MARK: - Internal --->
     final var index = 0
     
+    final var titleMultiplier: CGFloat = 0.5
+    
     final var type: ASTextFieldType = .classic
+    final var boxHorizontalPadding: CGFloat = 20
+    final var boxVerticalPadding: CGFloat = 8
     
     final var isEditable = true
     final var isPhoneTextField = false
@@ -39,21 +43,16 @@ public class ASTextField: UIView {
     
     final var container: UIView?
     final var textField: UITextField?
-    final var leftImageView: ASTImageView?
     final var titleLabel: UILabel?
     final var errorLabel: UILabel?
-    final var rightImageView: ASTImageView?
-    final var dropDownIcon: ASDropDownIcon?
+    final var leftIconViews: [ASTIconView]? = [ASTIconView]()
+    final var rightIconViews: [ASTIconView]? = [ASTIconView]()
     
     final var autoResetErrorTarget: AnyObject?
     final var autoInvalidTarget: AnyObject?
     
     final var autoInvalidAction: Selector?
     final var autoResetErrorAction: Selector?
-    
-    final var dropDownClosure: ASTextFieldDropDownClosure?
-    final var leftIconClosure: ASTextFieldLeftIconClosure?
-    final var rightIconClosure: ASTextFieldRightIconClosure?
     
     final var name: String?
     final var phoneMask: String? = "+XXX (XX) XXXX XXXX"

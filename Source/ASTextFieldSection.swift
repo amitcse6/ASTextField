@@ -26,6 +26,15 @@ public class ASTextFieldSection: ASTextField {
         setup()
     }
     
+    public init(_ delegate: ASTextFieldDelegate, _ titleMultiplier: CGFloat, _ name: String?, _ validator: AnyObject?) {
+        super.init(frame: CGRect.zero)
+        self.delegate = delegate
+        self.titleMultiplier = titleMultiplier
+        setName(name, true)
+        setAutoEventAll(validator)
+        setup()
+    }
+    
     public func setup() {
         type = .section
         initUIElements()
@@ -40,23 +49,32 @@ public class ASTextFieldSection: ASTextField {
         setBordeColor(UIColor(red: 200.0/255.0, green: 200.0/255.0, blue: 200.0/255.0, alpha: 1.0))
         setBordeWidth(1.0)
         setCornerRadius(10)
+        setTintBackgroundColor(.white)
         // MARK: - Container <---
         
         // MARK: - TextField --->
         textField?.textColor=UIColor.black
         textField?.textAlignment = .left
         textField?.delegate = self
-        textField?.placeholder = "Enter something here."
         textField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        setPlaceholder(("Enter \(name ?? "Enter something here.")"), true)
         // MARK: - TextField <---
         
         // MARK: - LeftImageView --->
-        leftImageView?.backgroundColor = .clear
+        leftIconViews?.forEach({ (iconView) in
+            iconView.backgroundColor = .clear
+        })
         // MARK: - LeftImageView <---
         
         // MARK: - RightImageView --->
-        rightImageView?.backgroundColor = .clear
+        rightIconViews?.forEach({ (iconView) in
+            iconView.backgroundColor = .clear
+        })
         // MARK: - RightImageView <---
+        
+        // MARK: - TitleLabel --->
+        setTitle()
+        // MARK: - TitleLabel <---
         
         // MARK: - ErrorLabel --->
         errorLabel?.font = UIFont.systemFont(ofSize: 10)

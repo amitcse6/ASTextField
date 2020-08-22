@@ -23,15 +23,14 @@ extension ASTextField {
         textField = UITextField()
         container?.addSubview(textField.unsafelyUnwrapped)
         
-        leftImageView = ASTImageView()
-        leftImageView?.contentMode = .scaleAspectFit
-        container?.addSubview(leftImageView.unsafelyUnwrapped)
+        leftIconViews?.forEach({ (iconView) in
+            iconView.contentMode = .scaleAspectFit
+            container?.addSubview(iconView)
+        })
         
-        rightImageView = ASTImageView()
-        rightImageView?.contentMode = .scaleAspectFit
-        container?.addSubview(rightImageView.unsafelyUnwrapped)
-        
-        dropDownIcon = ASDropDownIcon()
-        container?.addSubview(dropDownIcon.unsafelyUnwrapped)
+        rightIconViews?.forEach({ (iconView) in
+            iconView.contentMode = .scaleAspectFit
+            container?.addSubview(iconView)
+        })
     }
 }

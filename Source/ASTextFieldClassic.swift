@@ -26,6 +26,15 @@ public class ASTextFieldClassic: ASTextField {
         setup()
     }
     
+    public init(_ delegate: ASTextFieldDelegate, _ titleMultiplier: CGFloat, _ name: String?, _ validator: AnyObject?) {
+        super.init(frame: CGRect.zero)
+        self.delegate = delegate
+        self.titleMultiplier = titleMultiplier
+        setName(name, true)
+        setAutoEventAll(validator)
+        setup()
+    }
+    
     public func setup() {
         type = .classic
         initUIElements() 
@@ -48,15 +57,24 @@ public class ASTextFieldClassic: ASTextField {
         textField?.delegate = self
         textField?.placeholder = "Enter something here."
         textField?.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        setPlaceholder(("Enter \(name ?? "Enter something here.")"), true)
         // MARK: - TextField <---
         
-        // MARK: - LeftImageView --->
-        leftImageView?.backgroundColor = .clear
-        // MARK: - LeftImageView <---
+        // MARK: - LeftIconViews --->
+        leftIconViews?.forEach({ (iconView) in
+            iconView.backgroundColor = .clear
+        })
+        // MARK: - LeftIconViews <---
         
-        // MARK: - RightImageView --->
-        rightImageView?.backgroundColor = .clear
-        // MARK: - RightImageView <---
+        // MARK: - RightIconViews --->
+        rightIconViews?.forEach({ (iconView) in
+            iconView.backgroundColor = .clear
+        })
+        // MARK: - RightIconViews <---
+        
+        // MARK: - TitleLabel --->
+        //setTitle()
+        // MARK: - TitleLabel <---
         
         // MARK: - ErrorLabel --->
         errorLabel?.font = UIFont.systemFont(ofSize: 10)

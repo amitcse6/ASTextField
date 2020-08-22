@@ -45,4 +45,8 @@ extension ASTextField {
         }
         return true
     }
+    
+    func textFieldHilightWithRightIconBehavior(_ isSecure: Bool) {
+        setSecureTextEntry(!isSecure)
+    }
 }

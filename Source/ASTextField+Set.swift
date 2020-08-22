@@ -24,22 +24,6 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setDropDown(_ dropDownClosure: @escaping ASTextFieldDropDownClosure, _ size: CGSize?, _ color: UIColor?) -> ASTextField {
-        self.dropDownClosure = dropDownClosure
-        if let _ = dropDownIcon {
-            dropDownIcon?.removeFromSuperview()
-            dropDownIcon = nil
-        }
-        dropDownIcon = ASDropDownIcon(size: size, color: color, isActive: true)
-        dropDownIcon?.backgroundColor = .clear
-        dropDownIcon?.isUserInteractionEnabled = true
-        dropDownIcon?.addGestureRecognizer(ASTextFieldGestureRecognizer(target: self, action: #selector(dropDownEvent(_:))))
-        container?.addSubview(dropDownIcon.unsafelyUnwrapped)
-        setupConstraints()
-        return self
-    }
-    
-    @discardableResult
     public func setStateElement(_ value: String?) -> ASTextField {
         self.state.append(value)
         return self
@@ -164,13 +148,24 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setText(_ value: String?, _ isCheck: Bool? = false) -> ASTextField {
-        textField?.text = value ?? ""
+    public func setText(_ title: String?, _ textProps: ASTTextProps? = nil, _ isCheck: Bool? = false) -> ASTextField {
+        if let title = title {
+            textField?.text = title
+        }else if let title = getName() {
+            textField?.text = title
+        }
+        if let font = textProps?.font {
+            textField?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            textField?.textColor = textColor
+        }
         if let isCheck = isCheck, isCheck, let textField = textField {
             textFieldDidChange(textField)
         }
         return self
     }
+    
     
     @discardableResult
     public func setTextColor(_ color: UIColor) -> ASTextField {
@@ -197,15 +192,66 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setTitle(_ title: String?, _ font: UIFont? = nil) -> ASTextField {
+    public func setTitle(_ title: String? = nil, _ textProps: ASTTextProps? = nil) -> ASTextField {
         if let title = title {
             titleLabel?.text = title
         }else if let title = getName() {
             titleLabel?.text = title
         }
-        if let font = font {
+        if let font = textProps?.font {
             titleLabel?.font = font
         }
+        if let textColor = textProps?.textColor {
+            titleLabel?.textColor = textColor
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func setNameAsTitle(_ textProps: ASTTextProps? = nil) -> ASTextField {
+        setTitle(getName(), textProps)
+        return self
+    }
+    
+    @discardableResult
+    public func setErrorTitle(_ title: String? = nil, _ textProps: ASTTextProps? = nil) -> ASTextField {
+        if let title = title {
+            errorLabel?.text = title
+        }else if let title = getName() {
+            errorLabel?.text = title
+        }
+        if let font = textProps?.font {
+            errorLabel?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            errorLabel?.textColor = textColor
+        }
+        return self
+    }
+    
+    @discardableResult
+    public func setBoxHorizontalPadding(_ padding: CGFloat) -> ASTextField {
+        boxHorizontalPadding = padding
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setBoxVerticalPadding(_ padding: CGFloat) -> ASTextField {
+        boxVerticalPadding = padding
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    func setBackgroundColor(_ color: UIColor) -> ASTextField {
+        self.backgroundColor = color
+        return self
+    }
+    
+    @discardableResult
+    func setTintBackgroundColor(_ color: UIColor) -> ASTextField {
+        self.container?.backgroundColor = color
         return self
     }
     
@@ -268,35 +314,37 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setLeftImageIcon(_ icon: UIImage?) -> ASTextField {
-        leftImageView?.image = icon
-        return self
-    }
-    
-    @discardableResult
-    public func setRightImageIcon(_ icon: UIImage?) -> ASTextField {
-        rightImageView?.image = icon
-        return self
-    }
-    
-    @discardableResult
-    public func setLeftIcon(_ icon: UIImage?, _ closure: ASTextFieldLeftIconClosure?) -> ASTextField {
-        setLeftImageIcon(icon)
-        leftIconClosure = closure
-        leftImageView?.isUserInteractionEnabled = true
-        leftImageView?.isActive = true
-        leftImageView?.addGestureRecognizer(ASTextFieldGestureRecognizer(target: self, action: #selector(leftIconEvent(_:))))
+    public func setLeftIcon(_ icon: UIImage?, _ multiplier: CGFloat? = 1.0, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTIconView(self, icon, multiplier, closure)
+        container?.addSubview(iconView)
+        leftIconViews?.append(iconView)
         setupConstraints()
         return self
     }
     
     @discardableResult
-    public func setRightIcon(_ icon: UIImage?, _ closure: ASTextFieldLeftIconClosure?) -> ASTextField {
-        setRightImageIcon(icon)
-        rightIconClosure = closure
-        rightImageView?.isUserInteractionEnabled = true
-        rightImageView?.isActive = true
-        rightImageView?.addGestureRecognizer(ASTextFieldGestureRecognizer(target: self, action: #selector(rightIconEvent(_:))))
+    public func setLeftIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat? = 1.0, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, closure)
+        container?.addSubview(iconView)
+        leftIconViews?.append(iconView)
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setRightIcon(_ icon: UIImage?, _ multiplier: CGFloat? = 1.0, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTIconView(self, icon, multiplier, closure)
+        container?.addSubview(iconView)
+        rightIconViews?.append(iconView)
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, closure)
+        container?.addSubview(iconView)
+        rightIconViews?.append(iconView)
         setupConstraints()
         return self
     }

@@ -31,14 +31,15 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Source/**/*.swift'
+  s.resources = 'Source/Resources/*.xcassets'
   s.swift_version = '5.0'
   s.platforms = {
       "ios": "8.0"
   }
   
-  # s.resource_bundles = {
-  #   'ASTextField' => ['ASTextField/Assets/*.png']
-  # }
+  s.resource_bundles = {
+     'ASTextField' => ['Source/Resources/Assets.xcassets', 'Source/Resources/Sound/*.mp3']
+  }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

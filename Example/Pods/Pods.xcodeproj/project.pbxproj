@@ -25,12 +25,16 @@
 		2894438724EC267C003BB81F /* ASTextFieldGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */; };
 		2894438824EC267C003BB81F /* ASTextField+Set.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437724EC267B003BB81F /* ASTextField+Set.swift */; };
 		2894438924EC267C003BB81F /* ASTextField+Method.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437824EC267B003BB81F /* ASTextField+Method.swift */; };
-		2894438A24EC267C003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */; };
 		2894438B24EC267C003BB81F /* ASTextField+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */; };
-		2894438C24EC267C003BB81F /* ASTImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437B24EC267B003BB81F /* ASTImageView.swift */; };
 		2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */; };
 		2894438E24EC267C003BB81F /* ASTextFieldSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437D24EC267C003BB81F /* ASTextFieldSection.swift */; };
 		2894438F24EC267C003BB81F /* ASTextFieldAdvance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */; };
+		28AB2EB924F18AD800EE4891 /* ASTKeyboardGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB424F18AD700EE4891 /* ASTKeyboardGesture.swift */; };
+		28AB2EBA24F18AD800EE4891 /* ASTTextProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB524F18AD800EE4891 /* ASTTextProps.swift */; };
+		28AB2EBB24F18AD800EE4891 /* ASTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */; };
+		28AB2EBC24F18AD800EE4891 /* ASTIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB724F18AD800EE4891 /* ASTIconView.swift */; };
+		28AB2EBD24F18AD800EE4891 /* ASTextField+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB824F18AD800EE4891 /* ASTextField+UIView.swift */; };
+		28AB2EC124F18CCF00EE4891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28AB2EC024F18CCF00EE4891 /* Assets.xcassets */; };
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */; };
 		2DF813EB0C0BF60139EAD5ECF6EA2652 /* ASTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAADE5F8D921FE178705CCCFCBB796B /* ASTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36CEEA1B1CA199459750C1D23C6B38EC /* Pods-ASTextField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 790DA7F95B6C6E2A1B6D78ADFD50BF5E /* Pods-ASTextField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -105,12 +109,16 @@
 		2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldGestureRecognizer.swift; sourceTree = "<group>"; };
 		2894437724EC267B003BB81F /* ASTextField+Set.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Set.swift"; sourceTree = "<group>"; };
 		2894437824EC267B003BB81F /* ASTextField+Method.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+Method.swift"; sourceTree = "<group>"; };
-		2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldKeyboardTapGestureRecognizer.swift; sourceTree = "<group>"; };
 		2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
-		2894437B24EC267B003BB81F /* ASTImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTImageView.swift; sourceTree = "<group>"; };
 		2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldClassic.swift; sourceTree = "<group>"; };
 		2894437D24EC267C003BB81F /* ASTextFieldSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldSection.swift; sourceTree = "<group>"; };
 		2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldAdvance.swift; sourceTree = "<group>"; };
+		28AB2EB424F18AD700EE4891 /* ASTKeyboardGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTKeyboardGesture.swift; sourceTree = "<group>"; };
+		28AB2EB524F18AD800EE4891 /* ASTTextProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTTextProps.swift; sourceTree = "<group>"; };
+		28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldType.swift; sourceTree = "<group>"; };
+		28AB2EB724F18AD800EE4891 /* ASTIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTIconView.swift; sourceTree = "<group>"; };
+		28AB2EB824F18AD800EE4891 /* ASTextField+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+UIView.swift"; sourceTree = "<group>"; };
+		28AB2EC024F18CCF00EE4891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2AF3AF7A124914A7EC3F1F407D42C625 /* ASTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ASTextField.modulemap; sourceTree = "<group>"; };
 		323540375A1F3A59E3359ECAF5EA7871 /* Pods-ASTextField_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ASTextField_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		3448547A75E319AC96D4090982762BD8 /* Pods-ASTextField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ASTextField_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +251,12 @@
 		282243C724BA360000EAA5BF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				28AB2EBE24F18C9A00EE4891 /* Resources */,
+				28AB2EB824F18AD800EE4891 /* ASTextField+UIView.swift */,
+				28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */,
+				28AB2EB724F18AD800EE4891 /* ASTIconView.swift */,
+				28AB2EB424F18AD700EE4891 /* ASTKeyboardGesture.swift */,
+				28AB2EB524F18AD800EE4891 /* ASTTextProps.swift */,
 				2894437024EC267A003BB81F /* ASTextField+Action.swift */,
 				2894437424EC267A003BB81F /* ASTextField+Alias.swift */,
 				2894437224EC267A003BB81F /* ASTextField+Constraint.swift */,
@@ -257,14 +271,28 @@
 				2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */,
 				2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */,
 				2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */,
-				2894437924EC267B003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift */,
 				2894437D24EC267C003BB81F /* ASTextFieldSection.swift */,
-				2894437B24EC267B003BB81F /* ASTImageView.swift */,
 				282243C824BA360000EAA5BF /* ASTextField.swift */,
 				282243CA24BA360100EAA5BF /* ASDropDownIcon.swift */,
 				282243CB24BA360100EAA5BF /* ASTextFieldMath.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		28AB2EBE24F18C9A00EE4891 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AB2EBF24F18CB400EE4891 /* Sound */,
+				28AB2EC024F18CCF00EE4891 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		28AB2EBF24F18CB400EE4891 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		4BA2479549DD918290454B1CDCD0B92B /* Core */ = {
@@ -577,6 +605,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28AB2EC124F18CCF00EE4891 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -644,11 +673,15 @@
 				2894438E24EC267C003BB81F /* ASTextFieldSection.swift in Sources */,
 				2894438424EC267C003BB81F /* ASTextField+Override.swift in Sources */,
 				2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */,
-				2894438A24EC267C003BB81F /* ASTextFieldKeyboardTapGestureRecognizer.swift in Sources */,
 				2894438B24EC267C003BB81F /* ASTextField+UITextFieldDelegate.swift in Sources */,
+				28AB2EBD24F18AD800EE4891 /* ASTextField+UIView.swift in Sources */,
+				28AB2EBC24F18AD800EE4891 /* ASTIconView.swift in Sources */,
 				2894438524EC267C003BB81F /* ASTextField+Alias.swift in Sources */,
+				28AB2EBB24F18AD800EE4891 /* ASTextFieldType.swift in Sources */,
+				28AB2EB924F18AD800EE4891 /* ASTKeyboardGesture.swift in Sources */,
 				2894438324EC267C003BB81F /* ASTextField+Constraint.swift in Sources */,
 				2894437F24EC267C003BB81F /* ASTextField+Init.swift in Sources */,
+				28AB2EBA24F18AD800EE4891 /* ASTTextProps.swift in Sources */,
 				282243CD24BA360100EAA5BF /* ASTextField.swift in Sources */,
 				97AF5983CD3443E4C354668552145A36 /* ASTextField-dummy.m in Sources */,
 				2894438124EC267C003BB81F /* ASTextField+Action.swift in Sources */,
@@ -657,7 +690,6 @@
 				2894438624EC267C003BB81F /* ASTextField+Get.swift in Sources */,
 				282243D024BA360100EAA5BF /* ASTextFieldMath.swift in Sources */,
 				2894438024EC267C003BB81F /* ASTextField+ExternalLib.swift in Sources */,
-				2894438C24EC267C003BB81F /* ASTImageView.swift in Sources */,
 				2894438F24EC267C003BB81F /* ASTextFieldAdvance.swift in Sources */,
 				2894438724EC267C003BB81F /* ASTextFieldGestureRecognizer.swift in Sources */,
 				282243CF24BA360100EAA5BF /* ASDropDownIcon.swift in Sources */,

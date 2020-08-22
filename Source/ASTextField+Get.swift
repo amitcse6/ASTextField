@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 extension ASTextField {
-    public func getDropDownIcon() -> ASDropDownIcon? {
-        return dropDownIcon
-    }
+//    public func getDropDownIcon() -> ASTIconView? {
+//        return dropDownImageView
+//    }
     
     public func getName() -> String? {
         return name
@@ -66,11 +66,11 @@ extension ASTextField {
         return (container?.bounds.size.height ?? 0 - padding*2) * 0.5
     }
     
-    func getLeftImageView() -> ASTImageView? {
-        return leftImageView
-    }
-    
-    func getRightImageView() -> ASTImageView? {
-        return rightImageView
-    }
+//    func getLeftImageView() -> ASTIconView? {
+//        return leftImageView
+//    }
+//    
+//    func getRightImageView() -> ASTIconView? {
+//        return rightImageView
+//    }
 }

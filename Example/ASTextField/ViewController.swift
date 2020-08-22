@@ -9,99 +9,30 @@
 import UIKit
 import ASTextField
 
-class ViewController: UIViewController {
-    
-    @IBOutlet weak var firstNameTextField: ASTextFieldClassic!
-    @IBOutlet weak var lastNameTextField: ASTextFieldClassic!
-    @IBOutlet weak var emailTextField: ASTextFieldClassic!
-    @IBOutlet weak var phoneTextField: ASTextFieldClassic!
-    @IBOutlet weak var countryTextField: ASTextFieldClassic!
-    @IBOutlet weak var passwordTextField: ASTextFieldClassic!
-    @IBOutlet weak var confirmPasswordTextField: ASTextFieldClassic!
-    
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    let items = ["ClassicViewController", "AdvanceViewController", "SectionViewController"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        firstNameTextField.backgroundColor = .clear
-        firstNameTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("First Name", true)
-            .setDefaultValue("Amit") 
-            .setDelegate(self)
-            .setTitle(nil)
-        
-        lastNameTextField.backgroundColor = .clear
-        lastNameTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Last Name", true)
-            .setDelegate(self)
-        
-        emailTextField.backgroundColor = .clear
-        emailTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Email Address", true)
-            .setText("arif1@gamil.com")
-            .setAlwaysLowercase(true)
-        
-        phoneTextField.backgroundColor = .clear
-        phoneTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Phone", true)
-            .setPhomeMask("+XXX (XX) XXXX XXXX", "+XXXXXXXXXXXXX")
-            .setText("", true)
-            .setDelegate(self)
-        
-        countryTextField.backgroundColor = .clear
-        countryTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Country", true)
-            .setDropDown({index, object in
-                print("index: \(index)")
-            }, nil, nil)
-            .setAlwaysUppercase(true)
-            .setText("", true)
-            .setDelegate(self)
-        
-        passwordTextField.backgroundColor = .clear
-        passwordTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Password", true)
-            .setSecureTextEntry(true)
-            .setDelegate(self)
-        
-        
-        confirmPasswordTextField.backgroundColor = .clear
-        confirmPasswordTextField
-            .setTextColor(.black)
-            .setFont(UIFont.systemFont(ofSize: 15))
-            .setName("Confirm Password", true)
-            .setSecureTextEntry(true)
-            .setDelegate(self)
-        
-        ASTextField.hideKeyboardWhenTappedAround(view)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    @IBAction func submitEvent(_ sender: Any) {
-        print("First Name: \(firstNameTextField.getText())")
-        print("Last Name: \(lastNameTextField.getText())")
-        print("Email: \(emailTextField.getText())")
-        print("Phone: \(phoneTextField.getText())")
-        print("Country: \(countryTextField.getText())")
-        print("Password: \(passwordTextField.getText())")
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items.count
     }
-}
-
-extension ViewController: ASTextFieldDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: items[indexPath.row])
+        self.present(vc, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = items[indexPath.row]
+        return cell
+    }
 }
