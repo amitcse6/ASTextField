@@ -29,7 +29,7 @@ public class ASTextField: UIView {
     // MARK: - Internal --->
     final var index = 0
     
-    final var titleMultiplier: CGFloat = 0.5
+    final var titleMultiplier: CGFloat = 0.3
     
     final var type: ASTextFieldType = .classic
     final var boxHorizontalPadding: CGFloat = 20

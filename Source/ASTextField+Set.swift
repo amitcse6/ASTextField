@@ -148,6 +148,23 @@ extension ASTextField {
     }
     
     @discardableResult
+    public func setTextFromName(_ textProps: ASTTextProps? = nil, _ isCheck: Bool? = false) -> ASTextField {
+        if let title = getName() {
+            textField?.text = title
+        }
+        if let font = textProps?.font {
+            textField?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            textField?.textColor = textColor
+        }
+        if let isCheck = isCheck, isCheck, let textField = textField {
+            textFieldDidChange(textField)
+        }
+        return self
+    }
+    
+    @discardableResult
     public func setText(_ title: String?, _ textProps: ASTTextProps? = nil, _ isCheck: Bool? = false) -> ASTextField {
         if let title = title {
             textField?.text = title
@@ -192,6 +209,22 @@ extension ASTextField {
     }
     
     @discardableResult
+    public func setTitleFromName(_ textProps: ASTTextProps? = nil, _ multiplier: CGFloat? = nil) -> ASTextField {
+        if let title = getName() {
+            titleLabel?.text = title
+        }
+        if let font = textProps?.font {
+            titleLabel?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            titleLabel?.textColor = textColor
+        }
+        titleMultiplier = multiplier ?? 0.3
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
     public func setTitle(_ title: String? = nil, _ textProps: ASTTextProps? = nil) -> ASTextField {
         if let title = title {
             titleLabel?.text = title
@@ -210,6 +243,20 @@ extension ASTextField {
     @discardableResult
     public func setNameAsTitle(_ textProps: ASTTextProps? = nil) -> ASTextField {
         setTitle(getName(), textProps)
+        return self
+    }
+    
+    @discardableResult
+    public func setErrorTitleFromName(_ textProps: ASTTextProps? = nil) -> ASTextField {
+        if let title = getName() {
+            errorLabel?.text = title
+        }
+        if let font = textProps?.font {
+            errorLabel?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            errorLabel?.textColor = textColor
+        }
         return self
     }
     
@@ -343,6 +390,15 @@ extension ASTextField {
     @discardableResult
     public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, closure)
+        container?.addSubview(iconView)
+        rightIconViews?.append(iconView)
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat?, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, isAutoEvent, closure)
         container?.addSubview(iconView)
         rightIconViews?.append(iconView)
         setupConstraints()

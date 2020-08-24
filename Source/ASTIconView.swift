@@ -51,7 +51,21 @@ public class ASTIconView: UIView {
         self.textField = textField
         self.iconClosure = closure
         self.isActive = true
-        self.isAutoEvent = true
+        self.multiplier = multiplier ?? 1.0
+        self.isOn = defaultType
+        self.imageOn = imageOn
+        self.imageOff = imageOff
+        self.iconHilightWithRightIconBehavior()
+        textField?.textFieldHilightWithRightIconBehavior(self.isOn)
+        setup()
+    }
+    
+    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat? = 1.0, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) {
+        super.init(frame: CGRect.zero)
+        self.textField = textField
+        self.iconClosure = closure
+        self.isActive = true
+        self.isAutoEvent = isAutoEvent
         self.multiplier = multiplier ?? 1.0
         self.isOn = defaultType
         self.imageOn = imageOn

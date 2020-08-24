@@ -5,9 +5,54 @@
 [![License](https://img.shields.io/cocoapods/l/ASTextField.svg?style=flat)](https://cocoapods.org/pods/ASTextField)
 [![Platform](https://img.shields.io/cocoapods/p/ASTextField.svg?style=flat)](https://cocoapods.org/pods/ASTextField)
 
-## Example
+Screenshots
+---------
+![ASTextField Screenshots](astextField_screenshot.gif)
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+    
+## Example
+```swift
+
+import ASTextField
+
+
+@IBOutlet weak var firstNameTextField: ASTextFieldClassic!
+
+
+firstNameTextField
+.setName("First Name", true)
+.setDelegate(self)
+.setText("Amit", inputProps)
+.setTitleFromName(inputProps)
+.setErrorTitle("", errorProps)
+.setBoxHorizontalPadding(boxHorizontalPadding)
+.setBoxVerticalPadding(boxVerticalPadding)
+.setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+
+```
+
+## Import Statement
+```swift
+import ASTextField
+```
+
+## Setup Outlet
+```swift
+@IBOutlet weak var firstNameTextField: ASTextFieldClassic!
+```
+
+## Property Binding
+```swift
+firstNameTextField
+.setName("First Name", true)
+.setDelegate(self)
+.setText("Amit", inputProps)
+.setTitleFromName(inputProps)
+.setErrorTitle("", errorProps)
+.setBoxHorizontalPadding(boxHorizontalPadding)
+.setBoxVerticalPadding(boxVerticalPadding)
+.setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+```
 
 ## Requirements
 

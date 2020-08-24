@@ -13,7 +13,7 @@ public class ASTTextProps {
     public var font: UIFont?
     public var textColor: UIColor?
     
-    init(_ font: UIFont?, _ textColor: UIColor?) {
+    public init(_ font: UIFont?, _ textColor: UIColor?) {
         self.font = font
         self.textColor = textColor
     }

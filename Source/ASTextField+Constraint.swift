@@ -19,6 +19,7 @@ extension ASTextField {
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
                 titleLabel?.leftAnchor.constraint(equalTo: leftAnchor, constant: boxHorizontalPadding).isActive = true
                 titleLabel?.rightAnchor.constraint(equalTo: rightAnchor, constant: -boxHorizontalPadding).isActive = true
+                titleLabel?.heightAnchor.constraint(equalTo: heightAnchor, multiplier: titleMultiplier).isActive = true
                 // MARK: - TitleLabel <---
                 
                 // MARK: - ErrorLabel --->
@@ -42,6 +43,7 @@ extension ASTextField {
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
                 titleLabel?.leftAnchor.constraint(equalTo: leftAnchor, constant: boxHorizontalPadding).isActive = true
                 titleLabel?.rightAnchor.constraint(equalTo: rightAnchor, constant: -boxHorizontalPadding).isActive = true
+                titleLabel?.heightAnchor.constraint(equalTo: heightAnchor, multiplier: titleMultiplier).isActive = true
                 // MARK: - TitleLabel <---
                 
                 // MARK: - ErrorLabel --->
@@ -65,6 +67,7 @@ extension ASTextField {
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
                 titleLabel?.leftAnchor.constraint(equalTo: leftAnchor, constant: padding0).isActive = true
                 titleLabel?.rightAnchor.constraint(equalTo: rightAnchor, constant: -padding0).isActive = true
+                titleLabel?.heightAnchor.constraint(equalTo: heightAnchor, multiplier: titleMultiplier).isActive = true
                 // MARK: - TitleLabel <---
                 
                 // MARK: - ErrorLabel --->
@@ -113,7 +116,7 @@ extension ASTextField {
                     if index == 0 {
                         iconView.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -boxHorizontalPadding).isActive = true
                     }else {
-                        iconView.rightAnchor.constraint(equalTo: iconViews[index-1].leftAnchor, constant: padding4).isActive = true
+                        iconView.rightAnchor.constraint(equalTo: iconViews[index-1].leftAnchor, constant: -padding4).isActive = true
                     }
                     iconView.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor).isActive = true
                     iconView.heightAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: iconView.multiplier).isActive = true
