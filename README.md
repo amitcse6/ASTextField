@@ -49,8 +49,7 @@ firstNameTextField
 .setDelegate(self)
 .setText("Amit", ASTTextProps(UIFont.systemFont(ofSize: 12), .darkGray))
 .setTitleFromName(ASTTextProps(UIFont.systemFont(ofSize: 12), .darkGray))
-.setErrorTitle("", 
-static let errorProps = )
+.setErrorTitle("", errorProps)
 .setNameAsTitle(ASTTextProps(UIFont.systemFont(ofSize: 10), .black))
 .setBoxHorizontalPadding(15)
 .setBoxVerticalPadding(0)
