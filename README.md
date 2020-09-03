@@ -43,15 +43,19 @@ import ASTextField
 
 ## Property Binding
 ```swift
+
 firstNameTextField
 .setName("First Name", true)
 .setDelegate(self)
-.setText("Amit", inputProps)
-.setTitleFromName(inputProps)
-.setErrorTitle("", errorProps)
-.setBoxHorizontalPadding(boxHorizontalPadding)
-.setBoxVerticalPadding(boxVerticalPadding)
-.setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+.setText("Amit", ASTTextProps(UIFont.systemFont(ofSize: 12), .darkGray))
+.setTitleFromName(ASTTextProps(UIFont.systemFont(ofSize: 12), .darkGray))
+.setErrorTitle("", 
+static let errorProps = )
+.setNameAsTitle(ASTTextProps(UIFont.systemFont(ofSize: 10), .black))
+.setBoxHorizontalPadding(15)
+.setBoxVerticalPadding(0)
+.setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(0.4, 0.4), {textField, imageView, isOn in print(textField.getName() ?? "") })
+
 ```
 
 ## Requirements
