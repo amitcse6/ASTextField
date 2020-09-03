@@ -60,17 +60,11 @@ public class ASTextFieldSection: ASTextField {
         setPlaceholder(("Enter \(name ?? "Enter something here.")"), true)
         // MARK: - TextField <---
         
-        // MARK: - LeftImageView --->
-        leftIconViews?.forEach({ (iconView) in
-            iconView.backgroundColor = .clear
+        // MARK: - Views --->
+        views?.forEach({ (view) in
+            view.backgroundColor = .clear
         })
-        // MARK: - LeftImageView <---
-        
-        // MARK: - RightImageView --->
-        rightIconViews?.forEach({ (iconView) in
-            iconView.backgroundColor = .clear
-        })
-        // MARK: - RightImageView <---
+        // MARK: - Views <---
         
         // MARK: - TitleLabel --->
         setTitle()

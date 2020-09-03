@@ -23,14 +23,9 @@ extension ASTextField {
         textField = UITextField()
         container?.addSubview(textField.unsafelyUnwrapped)
         
-        leftIconViews?.forEach({ (iconView) in
-            iconView.contentMode = .scaleAspectFit
-            container?.addSubview(iconView)
-        })
-        
-        rightIconViews?.forEach({ (iconView) in
-            iconView.contentMode = .scaleAspectFit
-            container?.addSubview(iconView)
+        views?.forEach({ (view) in
+            view.contentMode = .scaleAspectFit
+            container?.addSubview(view)
         })
     }
 }

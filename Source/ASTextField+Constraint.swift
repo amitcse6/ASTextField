@@ -87,58 +87,76 @@ extension ASTextField {
                 break
             }
             
-            // MARK: - LeftIconViews --->
-            if let iconViews = leftIconViews {
-                for (index, iconView) in iconViews.enumerated() {
+            // MARK: - LeftViews --->
+            if let views = views?.filter({$0.alignType == .left}) {
+                for (index, iconView) in views.enumerated() {
                     iconView.ast_deactivateAllConstraints()
                     iconView.setupConstraints()
                     if index == 0 {
                         iconView.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor, constant: boxHorizontalPadding).isActive = true
                     }else {
-                        iconView.leftAnchor.constraint(equalTo: iconViews[index-1].rightAnchor, constant: padding4).isActive = true
+                        iconView.leftAnchor.constraint(equalTo: views[index-1].rightAnchor, constant: padding4).isActive = true
                     }
                     iconView.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor).isActive = true
-                    iconView.heightAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: iconView.multiplier).isActive = true
+                    // MARK: - WidthAnchor HeightAnchor --->
                     if  iconView.isActive {
-                        iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor).isActive = true
+                        iconView.heightAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: iconView.multiplier?.v ?? 1).isActive = true
+                        if let multiplier = iconView.multiplier, multiplier.hAsWidth {
+                            iconView.widthAnchor.constraint(equalTo: container.unsafelyUnwrapped.widthAnchor, multiplier: multiplier.h).isActive = true
+                        }else if let multiplier = iconView.multiplier {
+                            iconView.widthAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: multiplier.h).isActive = true
+                        }else {
+                            iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor).isActive = true
+                        }
                     }else{
                         iconView.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                        iconView.heightAnchor.constraint(equalToConstant: 0).isActive = true
                     }
+                    // MARK: - WidthAnchor HeightAnchor <---
                 }
             }
-            // MARK: - LeftIconViews <---
+            // MARK: - LeftViews <---
             
-            // MARK: - RightIconViews --->
-            if let iconViews = rightIconViews {
-                for (index, iconView) in iconViews.enumerated() {
+            // MARK: - RightViews --->
+            if let views = views?.filter({$0.alignType == .right}) {
+                for (index, iconView) in views.enumerated() {
                     iconView.ast_deactivateAllConstraints()
                     iconView.setupConstraints()
                     if index == 0 {
                         iconView.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -boxHorizontalPadding).isActive = true
                     }else {
-                        iconView.rightAnchor.constraint(equalTo: iconViews[index-1].leftAnchor, constant: -padding4).isActive = true
+                        iconView.rightAnchor.constraint(equalTo: views[index-1].leftAnchor, constant: -padding4).isActive = true
                     }
                     iconView.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor).isActive = true
-                    iconView.heightAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: iconView.multiplier).isActive = true
+                    // MARK: - WidthAnchor HeightAnchor --->
                     if  iconView.isActive {
-                        iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor).isActive = true
+                        iconView.heightAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: iconView.multiplier?.v ?? 1).isActive = true
+                        if let multiplier = iconView.multiplier, multiplier.hAsWidth {
+                            iconView.widthAnchor.constraint(equalTo: container.unsafelyUnwrapped.widthAnchor, multiplier: multiplier.h).isActive = true
+                        }else if let multiplier = iconView.multiplier {
+                            iconView.widthAnchor.constraint(equalTo: container.unsafelyUnwrapped.heightAnchor, multiplier: multiplier.h).isActive = true
+                        }else {
+                            iconView.widthAnchor.constraint(equalTo: iconView.heightAnchor).isActive = true
+                        }
                     }else{
                         iconView.widthAnchor.constraint(equalToConstant: 0).isActive = true
+                        iconView.heightAnchor.constraint(equalToConstant: 0).isActive = true
                     }
+                    // MARK: - WidthAnchor HeightAnchor <---
                 }
             }
-            // MARK: - RightIconViews <---
+            // MARK: - RightViews <---
             
             // MARK: - TextField --->
             textField?.ast_deactivateAllConstraints()
             textField?.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor, constant: padding4).isActive = true
-            if let iconViews = leftIconViews, let iconView = iconViews.last {
-                textField?.leftAnchor.constraint(equalTo: iconView.rightAnchor, constant: padding4).isActive = true
+            if let views = views?.filter({$0.alignType == .left}), let view = views.last {
+                textField?.leftAnchor.constraint(equalTo: view.rightAnchor, constant: padding4).isActive = true
             }else{
                 textField?.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor, constant: padding4).isActive = true
             }
-            if let iconViews = rightIconViews, let iconView = iconViews.last {
-                textField?.rightAnchor.constraint(equalTo: iconView.leftAnchor, constant: -padding4).isActive = true
+            if let views = views?.filter({$0.alignType == .right}), let view = views.last {
+                textField?.rightAnchor.constraint(equalTo: view.leftAnchor, constant: -padding4).isActive = true
             }else{
                 textField?.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor, constant: -padding4).isActive = true
             }

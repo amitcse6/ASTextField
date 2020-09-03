@@ -29,6 +29,10 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
     let boxHorizontalPadding: CGFloat = GlobalVariable.boxHorizontalPadding
     let boxVerticalPadding: CGFloat = GlobalVariable.boxVerticalPadding
     
+    let leftIconMultiplierV: CGFloat = GlobalVariable.leftInputIconMultiplier
+    let leftIconMultiplierH: CGFloat = GlobalVariable.leftInputIconMultiplier
+    let rightIconMultiplierH: CGFloat = GlobalVariable.rightInputIconMultiplier
+    let rightIconMultiplierV: CGFloat = GlobalVariable.rightInputIconMultiplier
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +46,7 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
         
         lastNameTextField.backgroundColor = .clear
         lastNameTextField
@@ -53,7 +57,7 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
         
         emailTextField.backgroundColor = .clear
         emailTextField
@@ -64,9 +68,9 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
             .setAlwaysLowercase(true)
-            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), rightInputIconMultiplier) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV)) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
         
         phoneTextField.backgroundColor = .clear
         phoneTextField
@@ -77,7 +81,7 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
             .setPhomeMask("+XXX (XX) XXXX XXXX", "+XXXXXXXXXXXXX")
         
         countryTextField.backgroundColor = .clear
@@ -89,8 +93,8 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
-            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), UIImage(named: GlobalVariable.dropDownIcon), rightInputIconMultiplier, false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), UIImage(named: GlobalVariable.dropDownIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
         
         passwordTextField.backgroundColor = .clear
         passwordTextField
@@ -101,8 +105,8 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.lockIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
-            .setRightIcon(UIImage(named: GlobalVariable.openEyeIcon), UIImage(named: GlobalVariable.closeEyeIcon), rightInputIconMultiplier, false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setLeftIcon(UIImage(named: GlobalVariable.lockIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setRightIcon(UIImage(named: GlobalVariable.openEyeIcon), UIImage(named: GlobalVariable.closeEyeIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
             .setSecureTextEntry(true)
         
         
@@ -115,8 +119,8 @@ class ClassicViewController: UIViewController, ASTextFieldDelegate {
             .setErrorTitle("", errorProps)
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
-            .setLeftIcon(UIImage(named: GlobalVariable.lockIcon), leftInputIconMultiplier, {textField, imageView, isOn in print(textField.getName() ?? "") })
-            .setRightIcon(UIImage(named: GlobalVariable.openEyeIcon), UIImage(named: GlobalVariable.closeEyeIcon), rightInputIconMultiplier, false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setLeftIcon(UIImage(named: GlobalVariable.lockIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
+            .setRightIcon(UIImage(named: GlobalVariable.openEyeIcon), UIImage(named: GlobalVariable.closeEyeIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
             .setSecureTextEntry(true)
         
         ASTextField.hideKeyboardWhenTappedAround(view)

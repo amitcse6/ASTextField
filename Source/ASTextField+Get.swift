@@ -10,10 +10,6 @@ import Foundation
 import UIKit
 
 extension ASTextField {
-//    public func getDropDownIcon() -> ASTIconView? {
-//        return dropDownImageView
-//    }
-    
     public func getName() -> String? {
         return name
     }
@@ -65,12 +61,4 @@ extension ASTextField {
     func getCornerRadius() -> CGFloat {
         return (container?.bounds.size.height ?? 0 - padding*2) * 0.5
     }
-    
-//    func getLeftImageView() -> ASTIconView? {
-//        return leftImageView
-//    }
-//    
-//    func getRightImageView() -> ASTIconView? {
-//        return rightImageView
-//    }
 }

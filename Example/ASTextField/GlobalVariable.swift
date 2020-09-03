@@ -17,6 +17,8 @@ class GlobalVariable {
 
     static let setDefaultText = true
     static let inputIconMultiplier: CGFloat = 0.4
+    static let leftInputIconMultiplier: CGFloat = 0.4
+    static let rightInputIconMultiplier: CGFloat = 0.4
     static let boxHorizontalPadding: CGFloat = 15
     static let boxVerticalPadding: CGFloat = 0
     

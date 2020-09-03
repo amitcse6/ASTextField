@@ -9,10 +9,17 @@
 import Foundation
 import UIKit
 
-public class ASTIconView: UIView {
+public enum ASTAlignType {
+    case left
+    case right
+}
+
+public class ASTView: UIView {
     public var isActive = false
     public var isAutoEvent = false
     public var isOn = false
+    
+    public var alignType = ASTAlignType.left
     
     public var container: UIView?
     public var imageView: UIImageView?
@@ -20,7 +27,7 @@ public class ASTIconView: UIView {
     public var imageOn: UIImage?
     public var imageOff: UIImage?
     
-    public var multiplier: CGFloat = 1
+    public var multiplier: ASTMultiplier?
     
     public var iconClosure: ASTextFieldIconClosure?
     
@@ -36,40 +43,43 @@ public class ASTIconView: UIView {
         setup()
     }
     
-    init(_ textField: ASTextField?, _ icon: UIImage?, _ multiplier: CGFloat? = 1.0, _ closure: ASTextFieldIconClosure?) {
+    init(_ textField: ASTextField?, _ icon: UIImage?, _ multiplier: ASTMultiplier?, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.imageOn = icon
         self.isActive = true
-        self.multiplier = multiplier ?? 1.0
+        self.multiplier = multiplier
         self.iconClosure = closure
+        self.alignType = alignType
         setup()
     }
     
-    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat? = 1.0, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) {
+    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.iconClosure = closure
         self.isActive = true
-        self.multiplier = multiplier ?? 1.0
+        self.multiplier = multiplier
         self.isOn = defaultType
         self.imageOn = imageOn
         self.imageOff = imageOff
+        self.alignType = alignType
         self.iconHilightWithRightIconBehavior()
         textField?.textFieldHilightWithRightIconBehavior(self.isOn)
         setup()
     }
     
-    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat? = 1.0, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) {
+    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.iconClosure = closure
         self.isActive = true
         self.isAutoEvent = isAutoEvent
-        self.multiplier = multiplier ?? 1.0
+        self.multiplier = multiplier
         self.isOn = defaultType
         self.imageOn = imageOn
         self.imageOff = imageOff
+        self.alignType = alignType
         self.iconHilightWithRightIconBehavior()
         textField?.textFieldHilightWithRightIconBehavior(self.isOn)
         setup()
@@ -135,7 +145,7 @@ public class ASTIconView: UIView {
     }
 }
 
-extension ASTIconView {
+extension ASTView {
     @objc public func iconEvent(_ sender: ASTextFieldGestureRecognizer? = nil) {
         isOn.toggle()
         if isAutoEvent {

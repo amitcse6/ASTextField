@@ -11,13 +11,6 @@ import UIKit
 
 extension ASTextField {
     @discardableResult
-    public func setBorderWith(borderColor:UIColor, borderWidth:CGFloat) -> ASTextField {
-        container?.layer.borderColor = borderColor.cgColor
-        container?.layer.borderWidth = borderWidth
-        return self
-    }
-    
-    @discardableResult
     public func setIndex(_ index: Int) -> ASTextField {
         self.index = index
         return self
@@ -68,19 +61,7 @@ extension ASTextField {
         self.phoneMaskRev = phoneMaskRev
         return self
     }
-    
-    @discardableResult
-    public func setBordeColor(_ borderColor: UIColor) -> ASTextField {
-        container?.layer.borderColor = borderColor.cgColor
-        return self
-    }
-    
-    @discardableResult
-    public func setBordeWidth(_ borderWidth: CGFloat) -> ASTextField {
-        container?.layer.borderWidth = borderWidth
-        return self
-    }
-    
+
     @discardableResult
     public func setTintDepth(_ value: CGFloat) -> ASTextField {
         padding = value
@@ -183,6 +164,27 @@ extension ASTextField {
         return self
     }
     
+    @discardableResult
+    public func setText(_ title: String?, _ placeholder: String?, _ textProps: ASTTextProps? = nil, _ isCheck: Bool? = false) -> ASTextField {
+        if let title = title {
+            textField?.text = title
+        }else if let title = getName() {
+            textField?.text = title
+        }
+        if let font = textProps?.font {
+            textField?.font = font
+        }
+        if let textColor = textProps?.textColor {
+            textField?.textColor = textColor
+        }
+        if let isCheck = isCheck, isCheck, let textField = textField {
+            textFieldDidChange(textField)
+        }
+        if let placeholder = placeholder{
+            setPlaceholder(placeholder)
+        }
+        return self
+    }
     
     @discardableResult
     public func setTextColor(_ color: UIColor) -> ASTextField {
@@ -291,20 +293,22 @@ extension ASTextField {
     }
     
     @discardableResult
-    func setBackgroundColor(_ color: UIColor) -> ASTextField {
-        self.backgroundColor = color
-        return self
-    }
-    
-    @discardableResult
-    func setTintBackgroundColor(_ color: UIColor) -> ASTextField {
-        self.container?.backgroundColor = color
+    public func setBoxXYPadding(_ paddingX: CGFloat, _ paddingY: CGFloat) -> ASTextField {
+        boxHorizontalPadding = paddingX
+        boxVerticalPadding = paddingY
+        setupConstraints()
         return self
     }
     
     @discardableResult
     public func setPlaceholder(_ placeholder: String? = nil, _ isPlaceholder: Bool? = true) -> ASTextField {
         textField?.placeholder = (isPlaceholder ?? false) ? (placeholder ?? "") : ""
+        return self
+    }
+    
+    @discardableResult
+    public func setPlaceholder(_ placeholder: String? = nil, _ attrs: [NSAttributedString.Key : Any], _ isPlaceholder: Bool? = true) -> ASTextField {
+        textField?.attributedPlaceholder = NSAttributedString(string: (isPlaceholder ?? false) ? (placeholder ?? "") : "", attributes: attrs)
         return self
     }
     
@@ -345,6 +349,40 @@ extension ASTextField {
         isEditable = true
         return self
     }
+}
+
+// MARK: - Container
+extension ASTextField {
+    @discardableResult
+    public func setBorderWith(borderColor:UIColor, borderWidth:CGFloat) -> ASTextField {
+        container?.layer.borderColor = borderColor.cgColor
+        container?.layer.borderWidth = borderWidth
+        return self
+    }
+    
+    @discardableResult
+    public func setBordeColor(_ borderColor: UIColor) -> ASTextField {
+        container?.layer.borderColor = borderColor.cgColor
+        return self
+    }
+    
+    @discardableResult
+    public func setBordeWidth(_ borderWidth: CGFloat) -> ASTextField {
+        container?.layer.borderWidth = borderWidth
+        return self
+    }
+    
+    @discardableResult
+    func setBackgroundColor(_ color: UIColor) -> ASTextField {
+        self.backgroundColor = color
+        return self
+    }
+    
+    @discardableResult
+    func setTintBackgroundColor(_ color: UIColor) -> ASTextField {
+        self.container?.backgroundColor = color
+        return self
+    }
     
     @discardableResult
     public func setCornerRadius(_ cornerRadius: CGFloat) -> ASTextField {
@@ -359,48 +397,51 @@ extension ASTextField {
         layoutSubviews()
         return self
     }
-    
+}
+
+// MARK: - LEFT RIGHT VIEW
+extension ASTextField {
     @discardableResult
-    public func setLeftIcon(_ icon: UIImage?, _ multiplier: CGFloat? = 1.0, _ closure: ASTextFieldIconClosure?) -> ASTextField {
-        let iconView = ASTIconView(self, icon, multiplier, closure)
+    public func setLeftIcon(_ icon: UIImage?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTView(self, icon, multiplier, closure, .left)
         container?.addSubview(iconView)
-        leftIconViews?.append(iconView)
+        views?.append(iconView)
         setupConstraints()
         return self
     }
     
     @discardableResult
-    public func setLeftIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat? = 1.0, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
-        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, closure)
+    public func setLeftIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, closure, .left)
         container?.addSubview(iconView)
-        leftIconViews?.append(iconView)
+        views?.append(iconView)
         setupConstraints()
         return self
     }
     
     @discardableResult
-    public func setRightIcon(_ icon: UIImage?, _ multiplier: CGFloat? = 1.0, _ closure: ASTextFieldIconClosure?) -> ASTextField {
-        let iconView = ASTIconView(self, icon, multiplier, closure)
+    public func setRightIcon(_ icon: UIImage?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTView(self, icon, multiplier, closure, .right)
         container?.addSubview(iconView)
-        rightIconViews?.append(iconView)
+        views?.append(iconView)
         setupConstraints()
         return self
     }
     
     @discardableResult
-    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
-        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, closure)
+    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, closure, .right)
         container?.addSubview(iconView)
-        rightIconViews?.append(iconView)
+        views?.append(iconView)
         setupConstraints()
         return self
     }
     
     @discardableResult
-    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: CGFloat?, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
-        let iconView = ASTIconView(self, imageOn, imageOff, multiplier, defaultType, isAutoEvent, closure)
+    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+        let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, isAutoEvent, closure, .right)
         container?.addSubview(iconView)
-        rightIconViews?.append(iconView)
+        views?.append(iconView)
         setupConstraints()
         return self
     }

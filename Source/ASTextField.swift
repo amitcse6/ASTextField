@@ -45,8 +45,7 @@ public class ASTextField: UIView {
     final var textField: UITextField?
     final var titleLabel: UILabel?
     final var errorLabel: UILabel?
-    final var leftIconViews: [ASTIconView]? = [ASTIconView]()
-    final var rightIconViews: [ASTIconView]? = [ASTIconView]()
+    final var views: [ASTView]? = [ASTView]()
     
     final var autoResetErrorTarget: AnyObject?
     final var autoInvalidTarget: AnyObject?

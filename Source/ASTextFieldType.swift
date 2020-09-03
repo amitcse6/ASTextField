@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum ASTextFieldType {
+public enum ASTextFieldType {
     case classic
     case advance
     case section

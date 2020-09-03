@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 public typealias ASTextFieldDropDown = Int
-public typealias ASTextFieldIconView = ASTIconView
+public typealias ASTextFieldIconView = ASTView
 public typealias ASTIsOnOrOff = Bool
 public typealias ASTextFieldDropDownClosure = (ASTextFieldDropDown, ASTextField) -> Void
 public typealias ASTextFieldLeftIconClosure = (ASTextField, ASTextFieldIconView, ASTIsOnOrOff) -> Void
