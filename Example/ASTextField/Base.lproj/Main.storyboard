@@ -170,6 +170,133 @@
             </objects>
             <point key="canvasLocation" x="913" y="-129"/>
         </scene>
+        <!--Decorated View Controller-->
+        <scene sceneID="Pxp-fr-QR2">
+            <objects>
+                <viewController storyboardIdentifier="DecoratedViewController" id="c1r-52-odg" customClass="DecoratedViewController" customModule="ASTextField_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oOk-sG-Y2d"/>
+                        <viewControllerLayoutGuide type="bottom" id="LsX-W8-s18"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nwc-NA-1hi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="yOL-dB-LUV" customClass="B">
+                                <rect key="frame" x="16" y="44" width="343" height="734"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrG-3p-1aN">
+                                <rect key="frame" x="50" y="94" width="275" height="634"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="aVW-Ou-NeD">
+                                        <rect key="frame" x="0.0" y="16" width="275" height="536"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sd5-3V-KsW" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="0.0" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="k3g-cl-jHN"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBH-1p-DZo" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="68" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="ou1-yY-RVk"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ibR-PI-yiA" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="136" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="76w-B2-WGf"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRb-Lo-ia0" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="204" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="bRe-mQ-cXc"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Luf-8f-CB6" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="272" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="D4n-6I-Bvx"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lf-Yj-djY" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="340" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="yaa-rh-yeM"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="D0h-1n-M8g" customClass="ASTextFieldDecorated" customModule="ASTextField">
+                                                <rect key="frame" x="0.0" y="408" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="vlM-RQ-BKU"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3C-TK-kHI">
+                                                <rect key="frame" x="0.0" y="476" width="275" height="60"/>
+                                                <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="ayP-x5-IIk"/>
+                                                </constraints>
+                                                <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="submitEvent:" destination="c1r-52-odg" eventType="touchUpInside" id="Qqe-iA-enw"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" priority="250" constant="634" id="xSt-k8-tw5"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="aVW-Ou-NeD" firstAttribute="width" secondItem="lrG-3p-1aN" secondAttribute="width" id="6CC-LH-scr"/>
+                                    <constraint firstItem="aVW-Ou-NeD" firstAttribute="leading" secondItem="lrG-3p-1aN" secondAttribute="leading" id="Ek7-TJ-WWf"/>
+                                    <constraint firstAttribute="bottom" secondItem="aVW-Ou-NeD" secondAttribute="bottom" constant="16" id="MqO-ok-9Yh"/>
+                                    <constraint firstItem="aVW-Ou-NeD" firstAttribute="top" secondItem="lrG-3p-1aN" secondAttribute="top" constant="16" id="ZZB-8G-T9Q"/>
+                                    <constraint firstAttribute="trailing" secondItem="aVW-Ou-NeD" secondAttribute="trailing" constant="50" id="ceR-I3-2qE"/>
+                                    <constraint firstItem="aVW-Ou-NeD" firstAttribute="leading" secondItem="9ns-i3-Zol" secondAttribute="leading" id="jdp-Oq-8i5"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="Z85-So-ahQ"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="9ns-i3-Zol"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lrG-3p-1aN" firstAttribute="leading" secondItem="nwc-NA-1hi" secondAttribute="leading" constant="50" id="6yf-gx-1Iw"/>
+                            <constraint firstItem="lrG-3p-1aN" firstAttribute="top" secondItem="oOk-sG-Y2d" secondAttribute="bottom" constant="50" id="AVq-pa-8aa"/>
+                            <constraint firstItem="lrG-3p-1aN" firstAttribute="centerX" secondItem="nwc-NA-1hi" secondAttribute="centerX" id="P9h-ff-dcA"/>
+                            <constraint firstItem="LsX-W8-s18" firstAttribute="top" secondItem="lrG-3p-1aN" secondAttribute="bottom" constant="50" id="gx4-4d-xBS"/>
+                            <constraint firstAttribute="trailing" secondItem="lrG-3p-1aN" secondAttribute="trailing" constant="50" id="hJb-GJ-fV5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yOL-dB-LUV" secondAttribute="trailing" id="m6A-kp-VXy"/>
+                            <constraint firstItem="yOL-dB-LUV" firstAttribute="top" secondItem="oOk-sG-Y2d" secondAttribute="bottom" id="oY8-dS-Wi4"/>
+                            <constraint firstItem="yOL-dB-LUV" firstAttribute="leading" secondItem="nwc-NA-1hi" secondAttribute="leadingMargin" id="rRW-4q-fN7"/>
+                            <constraint firstItem="LsX-W8-s18" firstAttribute="top" secondItem="yOL-dB-LUV" secondAttribute="bottom" id="wHm-uj-HgV"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="o2r-VR-oiN"/>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="D0h-1n-M8g" id="oA2-3k-rLu"/>
+                        <outlet property="countryTextField" destination="Luf-8f-CB6" id="pBP-tp-iTC"/>
+                        <outlet property="emailTextField" destination="ibR-PI-yiA" id="p9L-pd-1CY"/>
+                        <outlet property="firstNameTextField" destination="sd5-3V-KsW" id="J0c-QK-SKz"/>
+                        <outlet property="lastNameTextField" destination="wBH-1p-DZo" id="8In-N8-EGa"/>
+                        <outlet property="passwordTextField" destination="5Lf-Yj-djY" id="NP1-VG-sX9"/>
+                        <outlet property="phoneTextField" destination="lRb-Lo-ia0" id="5qM-Tb-ZjA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fNT-z2-1JZ" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644" y="-509.11330049261085"/>
+        </scene>
         <!--Advance View Controller-->
         <scene sceneID="5G7-qP-x5Q">
             <objects>
@@ -424,4 +551,7 @@
             <point key="canvasLocation" x="-815.20000000000005" y="144.82758620689657"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1233" height="1600"/>
+    </resources>
 </document>

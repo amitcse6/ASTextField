@@ -293,6 +293,28 @@ extension ASTextField {
     }
     
     @discardableResult
+    public func setDBoxVerticalPadding(_ padding: CGFloat) -> ASTextField {
+        boxDVerticalPadding = padding
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setDBoxHorizontalPadding(_ padding: CGFloat) -> ASTextField {
+        boxDHorizontalPadding = padding
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setDBoxPadding(_ padding: CGSize) -> ASTextField {
+        boxDVerticalPadding = padding.height
+        boxDHorizontalPadding = padding.width
+        setupConstraints()
+        return self
+    }
+    
+    @discardableResult
     public func setBoxXYPadding(_ paddingX: CGFloat, _ paddingY: CGFloat) -> ASTextField {
         boxHorizontalPadding = paddingX
         boxVerticalPadding = paddingY
@@ -341,6 +363,13 @@ extension ASTextField {
     @discardableResult
     public func setDisableEditing() -> ASTextField {
         isEditable = false
+        return self
+    }
+    
+    @discardableResult
+    public func setDisableEditing(_ color: UIColor) -> ASTextField {
+        isEditable = false
+        container?.backgroundColor = color
         return self
     }
     
@@ -407,6 +436,12 @@ extension ASTextField {
         container?.addSubview(iconView)
         views?.append(iconView)
         setupConstraints()
+        return self
+    }
+    
+    @discardableResult
+    public func setBackgroundIcon(_ icon: UIImage?) -> ASTextField {
+        imageView?.image = icon
         return self
     }
     

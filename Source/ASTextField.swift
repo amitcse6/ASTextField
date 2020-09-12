@@ -34,6 +34,8 @@ public class ASTextField: UIView {
     final var type: ASTextFieldType = .classic
     final var boxHorizontalPadding: CGFloat = 20
     final var boxVerticalPadding: CGFloat = 8
+    final var boxDHorizontalPadding: CGFloat = 20
+    final var boxDVerticalPadding: CGFloat = 8
     
     final var isEditable = true
     final var isPhoneTextField = false
@@ -42,6 +44,7 @@ public class ASTextField: UIView {
     final var alwaysUppercase = false
     
     final var container: UIView?
+    final var imageView: UIImageView?
     final var textField: UITextField?
     final var titleLabel: UILabel?
     final var errorLabel: UILabel?

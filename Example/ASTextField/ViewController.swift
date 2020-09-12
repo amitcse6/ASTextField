@@ -10,7 +10,7 @@ import UIKit
 import ASTextField
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    let items = ["ClassicViewController", "AdvanceViewController", "SectionViewController"]
+    let items = ["ClassicViewController", "AdvanceViewController", "SectionViewController", "DecoratedViewController"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

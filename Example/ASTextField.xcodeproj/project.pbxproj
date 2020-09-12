@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		28789D3624F37C2900E892E3 /* GlobalVariable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28789D3524F37C2900E892E3 /* GlobalVariable.swift */; };
+		28A03A60250CB9D60087638C /* DecoratedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A03A5F250CB9D60087638C /* DecoratedViewController.swift */; };
 		28AB2EC324F18F0E00EE4891 /* ClassicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EC224F18F0E00EE4891 /* ClassicViewController.swift */; };
 		28AB2EC524F18F2E00EE4891 /* AdvanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EC424F18F2E00EE4891 /* AdvanceViewController.swift */; };
 		28AB2EC724F18F4700EE4891 /* SectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EC624F18F4700EE4891 /* SectionViewController.swift */; };
@@ -35,6 +36,7 @@
 		00F80509ADFF18E6CC0627A9 /* Pods-ASTextField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ASTextField_Tests.release.xcconfig"; path = "Target Support Files/Pods-ASTextField_Tests/Pods-ASTextField_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		0CB9838E01333C7A5E7B95FD /* Pods_ASTextField_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ASTextField_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28789D3524F37C2900E892E3 /* GlobalVariable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariable.swift; sourceTree = "<group>"; };
+		28A03A5F250CB9D60087638C /* DecoratedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratedViewController.swift; sourceTree = "<group>"; };
 		28AB2EC224F18F0E00EE4891 /* ClassicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicViewController.swift; sourceTree = "<group>"; };
 		28AB2EC424F18F2E00EE4891 /* AdvanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvanceViewController.swift; sourceTree = "<group>"; };
 		28AB2EC624F18F4700EE4891 /* SectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				28AB2EC224F18F0E00EE4891 /* ClassicViewController.swift */,
 				28AB2EC424F18F2E00EE4891 /* AdvanceViewController.swift */,
 				28AB2EC624F18F4700EE4891 /* SectionViewController.swift */,
+				28A03A5F250CB9D60087638C /* DecoratedViewController.swift */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				28789D3524F37C2900E892E3 /* GlobalVariable.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
@@ -364,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28A03A60250CB9D60087638C /* DecoratedViewController.swift in Sources */,
 				28AB2EC324F18F0E00EE4891 /* ClassicViewController.swift in Sources */,
 				28AB2EC724F18F4700EE4891 /* SectionViewController.swift in Sources */,
 				28789D3624F37C2900E892E3 /* GlobalVariable.swift in Sources */,

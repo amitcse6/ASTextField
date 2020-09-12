@@ -14,6 +14,15 @@ extension ASTextField {
         if #available(iOS 9.0, *) {
             switch type {
             case .classic:
+                // MARK: - ImageView --->
+                imageView?.ast_deactivateAllConstraints()
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+                imageView?.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+                imageView?.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+                // MARK: - ImageView <---
+                
+                
                 // MARK: - TitleLabel --->
                 titleLabel?.ast_deactivateAllConstraints()
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
@@ -38,6 +47,14 @@ extension ASTextField {
                 // MARK: - Container <---
                 break
             case .advance:
+                // MARK: - ImageView --->
+                imageView?.ast_deactivateAllConstraints()
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+                imageView?.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+                imageView?.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+                // MARK: - ImageView <---
+                
                 // MARK: - TitleLabel --->
                 titleLabel?.ast_deactivateAllConstraints()
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
@@ -62,6 +79,14 @@ extension ASTextField {
                 // MARK: - Container <---
                 break
             case .section:
+                // MARK: - ImageView --->
+                imageView?.ast_deactivateAllConstraints()
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+                imageView?.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+                imageView?.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+                // MARK: - ImageView <---
+                
                 // MARK: - TitleLabel --->
                 titleLabel?.ast_deactivateAllConstraints()
                 titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxVerticalPadding).isActive = true
@@ -85,6 +110,38 @@ extension ASTextField {
                 container?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding16).isActive = true
                 // MARK: - Container <---
                 break
+            case .decorated:
+                // MARK: - ImageView --->
+                imageView?.ast_deactivateAllConstraints()
+                imageView?.topAnchor.constraint(equalTo: topAnchor, constant: 0).isActive = true
+                imageView?.leftAnchor.constraint(equalTo: leftAnchor, constant: 0).isActive = true
+                imageView?.rightAnchor.constraint(equalTo: rightAnchor, constant: 0).isActive = true
+                imageView?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 0).isActive = true
+                // MARK: - ImageView <---
+                
+                
+                // MARK: - TitleLabel --->
+                titleLabel?.ast_deactivateAllConstraints()
+                titleLabel?.topAnchor.constraint(equalTo: topAnchor, constant: boxDVerticalPadding).isActive = true
+                titleLabel?.leftAnchor.constraint(equalTo: leftAnchor, constant: boxDHorizontalPadding).isActive = true
+                titleLabel?.rightAnchor.constraint(equalTo: rightAnchor, constant: -boxDHorizontalPadding).isActive = true
+                titleLabel?.heightAnchor.constraint(equalTo: heightAnchor, multiplier: titleMultiplier).isActive = true
+                // MARK: - TitleLabel <---
+                
+                // MARK: - ErrorLabel --->
+                errorLabel?.ast_deactivateAllConstraints()
+                errorLabel?.leftAnchor.constraint(equalTo: leftAnchor, constant: boxDHorizontalPadding).isActive = true
+                errorLabel?.rightAnchor.constraint(equalTo: rightAnchor, constant: -boxDHorizontalPadding).isActive = true
+                errorLabel?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: padding0).isActive = true
+                // MARK: - ErrorLabel <---
+                
+                // MARK: - Container --->
+                container?.ast_deactivateAllConstraints()
+                container?.topAnchor.constraint(equalTo: topAnchor, constant: boxDVerticalPadding).isActive = true
+                container?.leftAnchor.constraint(equalTo: leftAnchor, constant: boxDHorizontalPadding).isActive = true
+                container?.rightAnchor.constraint(equalTo: rightAnchor, constant: -boxDHorizontalPadding).isActive = true
+                container?.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -boxDVerticalPadding).isActive = true
+                // MARK: - Container <---
             }
             
             // MARK: - LeftViews --->

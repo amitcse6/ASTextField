@@ -11,6 +11,9 @@ import UIKit
 
 extension ASTextField {
     public func initUIElements() {
+        imageView = UIImageView()
+        addSubview(imageView.unsafelyUnwrapped)
+        
         container = UIView()
         addSubview(container.unsafelyUnwrapped)
         

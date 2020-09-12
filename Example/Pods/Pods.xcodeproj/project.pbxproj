@@ -31,6 +31,7 @@
 		2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */; };
 		2894438E24EC267C003BB81F /* ASTextFieldSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437D24EC267C003BB81F /* ASTextFieldSection.swift */; };
 		2894438F24EC267C003BB81F /* ASTextFieldAdvance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */; };
+		28A03A62250CBAD70087638C /* ASTextFieldDecorated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A03A61250CBAD70087638C /* ASTextFieldDecorated.swift */; };
 		28AB2EB924F18AD800EE4891 /* ASTKeyboardGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB424F18AD700EE4891 /* ASTKeyboardGesture.swift */; };
 		28AB2EBA24F18AD800EE4891 /* ASTTextProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB524F18AD800EE4891 /* ASTTextProps.swift */; };
 		28AB2EBB24F18AD800EE4891 /* ASTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */; };
@@ -116,6 +117,7 @@
 		2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldClassic.swift; sourceTree = "<group>"; };
 		2894437D24EC267C003BB81F /* ASTextFieldSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldSection.swift; sourceTree = "<group>"; };
 		2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldAdvance.swift; sourceTree = "<group>"; };
+		28A03A61250CBAD70087638C /* ASTextFieldDecorated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASTextFieldDecorated.swift; sourceTree = "<group>"; };
 		28AB2EB424F18AD700EE4891 /* ASTKeyboardGesture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTKeyboardGesture.swift; sourceTree = "<group>"; };
 		28AB2EB524F18AD800EE4891 /* ASTTextProps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTTextProps.swift; sourceTree = "<group>"; };
 		28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldType.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				2894437A24EC267B003BB81F /* ASTextField+UITextFieldDelegate.swift */,
 				2894437E24EC267C003BB81F /* ASTextFieldAdvance.swift */,
 				2894437C24EC267C003BB81F /* ASTextFieldClassic.swift */,
+				28A03A61250CBAD70087638C /* ASTextFieldDecorated.swift */,
 				2894437624EC267B003BB81F /* ASTextFieldGestureRecognizer.swift */,
 				2894437D24EC267C003BB81F /* ASTextFieldSection.swift */,
 				282243C824BA360000EAA5BF /* ASTextField.swift */,
@@ -677,6 +680,7 @@
 				2894438424EC267C003BB81F /* ASTextField+Override.swift in Sources */,
 				2894438D24EC267C003BB81F /* ASTextFieldClassic.swift in Sources */,
 				2894438B24EC267C003BB81F /* ASTextField+UITextFieldDelegate.swift in Sources */,
+				28A03A62250CBAD70087638C /* ASTextFieldDecorated.swift in Sources */,
 				2812CA6E2500D59600CC9921 /* ASTMultiplier.swift in Sources */,
 				28AB2EBD24F18AD800EE4891 /* ASTextField+UIView.swift in Sources */,
 				2894438524EC267C003BB81F /* ASTextField+Alias.swift in Sources */,

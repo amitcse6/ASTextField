@@ -12,4 +12,5 @@ public enum ASTextFieldType {
     case classic
     case advance
     case section
+    case decorated
 }
