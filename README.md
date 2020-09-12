@@ -7,8 +7,8 @@
 
 Screenshots
 ---------
-![ASTextField Screenshots](astextField_screenshot.gif)
-![ASTextField Screenshots](astextField_d_screenshot.png)
+![ASTextField Screenshots](astextField_screenshot.gif)![ASTextField Screenshots](astextField_d_screenshot.png)
+
     
 ## Example
 ```swift
