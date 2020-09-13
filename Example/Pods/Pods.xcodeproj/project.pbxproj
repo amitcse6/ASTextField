@@ -37,6 +37,7 @@
 		28AB2EBB24F18AD800EE4891 /* ASTextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */; };
 		28AB2EBD24F18AD800EE4891 /* ASTextField+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AB2EB824F18AD800EE4891 /* ASTextField+UIView.swift */; };
 		28AB2EC124F18CCF00EE4891 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28AB2EC024F18CCF00EE4891 /* Assets.xcassets */; };
+		28E11189250DD5FC005DD385 /* ASTString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E11188250DD5FC005DD385 /* ASTString+Extension.swift */; };
 		2DCFF0CE0BD295F1D46D3247F36B192C /* UIImage+Compare.m in Sources */ = {isa = PBXBuildFile; fileRef = 235A78CFFA6D8B8D86CACD733531CB13 /* UIImage+Compare.m */; };
 		2DF813EB0C0BF60139EAD5ECF6EA2652 /* ASTextField-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CAADE5F8D921FE178705CCCFCBB796B /* ASTextField-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		36CEEA1B1CA199459750C1D23C6B38EC /* Pods-ASTextField_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 790DA7F95B6C6E2A1B6D78ADFD50BF5E /* Pods-ASTextField_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -123,6 +124,7 @@
 		28AB2EB624F18AD800EE4891 /* ASTextFieldType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASTextFieldType.swift; sourceTree = "<group>"; };
 		28AB2EB824F18AD800EE4891 /* ASTextField+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ASTextField+UIView.swift"; sourceTree = "<group>"; };
 		28AB2EC024F18CCF00EE4891 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		28E11188250DD5FC005DD385 /* ASTString+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ASTString+Extension.swift"; sourceTree = "<group>"; };
 		2AF3AF7A124914A7EC3F1F407D42C625 /* ASTextField.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ASTextField.modulemap; sourceTree = "<group>"; };
 		323540375A1F3A59E3359ECAF5EA7871 /* Pods-ASTextField_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-ASTextField_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		3448547A75E319AC96D4090982762BD8 /* Pods-ASTextField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-ASTextField_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				282243C824BA360000EAA5BF /* ASTextField.swift */,
 				282243CA24BA360100EAA5BF /* ASDropDownIcon.swift */,
 				282243CB24BA360100EAA5BF /* ASTextFieldMath.swift */,
+				28E11188250DD5FC005DD385 /* ASTString+Extension.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				97AF5983CD3443E4C354668552145A36 /* ASTextField-dummy.m in Sources */,
 				2894438124EC267C003BB81F /* ASTextField+Action.swift in Sources */,
 				2894438924EC267C003BB81F /* ASTextField+Method.swift in Sources */,
+				28E11189250DD5FC005DD385 /* ASTString+Extension.swift in Sources */,
 				2894438824EC267C003BB81F /* ASTextField+Set.swift in Sources */,
 				2894438624EC267C003BB81F /* ASTextField+Get.swift in Sources */,
 				282243D024BA360100EAA5BF /* ASTextFieldMath.swift in Sources */,
