@@ -46,7 +46,7 @@ extension ASTextField {
         return state
     }
     
-    public func getTrimText() -> String {
+    public func getText() -> String {
         if isPhoneTextField, let phoneMaskRev = phoneMaskRev {
             return textField?.text?.format(with: phoneMaskRev).asttrimmingCharacters ?? ""
         }else {
@@ -54,7 +54,7 @@ extension ASTextField {
         }
     }
     
-    public func getText() -> String {
+    public func getNormalText() -> String {
         if isPhoneTextField, let phoneMaskRev = phoneMaskRev {
             return textField?.text?.format(with: phoneMaskRev) ?? ""
         }else {

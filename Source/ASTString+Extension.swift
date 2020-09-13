@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension String {
-    var asttrimmingCharacters: String {
+    public var asttrimmingCharacters: String {
         return self.trimmingCharacters(in: .whitespacesAndNewlines)
     }
 }
