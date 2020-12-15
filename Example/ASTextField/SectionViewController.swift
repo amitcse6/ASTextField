@@ -72,7 +72,6 @@ class SectionViewController: UIViewController, ASTextFieldDelegate {
             .setBoxVerticalPadding(boxVerticalPadding)
             .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
             .setAlwaysLowercase(true)
-            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV)) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
         
         phoneTextField.backgroundColor = .clear
         phoneTextField
@@ -96,7 +95,7 @@ class SectionViewController: UIViewController, ASTextFieldDelegate {
             .setBoxHorizontalPadding(boxHorizontalPadding)
             .setBoxVerticalPadding(boxVerticalPadding)
             .setLeftIcon(UIImage(named: GlobalVariable.userIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
-            .setRightIcon(UIImage(named: GlobalVariable.dropDownIcon), UIImage(named: GlobalVariable.dropDownIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setRightIcon({UIImageView(image: UIImage(named: GlobalVariable.dropDownIcon))}, UIImage(named: GlobalVariable.dropDownIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
         
         passwordTextField.backgroundColor = .clear
         passwordTextField
@@ -109,6 +108,15 @@ class SectionViewController: UIViewController, ASTextFieldDelegate {
             .setBoxVerticalPadding(boxVerticalPadding)
             .setLeftIcon(UIImage(named: GlobalVariable.lockIcon), ASTMultiplier(leftIconMultiplierH, leftIconMultiplierV), {textField, imageView, isOn in print(textField.getName() ?? "") })
             .setRightIcon(UIImage(named: GlobalVariable.openEyeIcon), UIImage(named: GlobalVariable.closeEyeIcon), ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), false) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
+            .setRightIcon({ () -> UIView in
+                let childView = UIView()
+                childView.backgroundColor = .red
+                return childView
+            }, { () -> UIView in
+                let childView = UIView()
+                childView.backgroundColor = .blue
+                return childView
+            }, ASTMultiplier(rightIconMultiplierH, rightIconMultiplierV), true, true) { (textField, textFieldIconView, isOnOrOff) in print(textField.getName() ?? "")}
             .setSecureTextEntry(true)
         
         

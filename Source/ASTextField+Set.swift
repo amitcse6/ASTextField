@@ -431,7 +431,7 @@ extension ASTextField {
 // MARK: - LEFT RIGHT VIEW
 extension ASTextField {
     @discardableResult
-    public func setLeftIcon(_ icon: UIImage?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+    public func setLeftIcon(_ icon: Any?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTView(self, icon, multiplier, closure, .left)
         container?.addSubview(iconView)
         views?.append(iconView)
@@ -446,7 +446,7 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setLeftIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+    public func setLeftIcon(_ imageOn: Any?, _ imageOff: ASTextFieldChildViewClosure?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, closure, .left)
         container?.addSubview(iconView)
         views?.append(iconView)
@@ -455,7 +455,7 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setRightIcon(_ icon: UIImage?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+    public func setRightIcon(_ icon: Any?, _ multiplier: ASTMultiplier? = nil, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTView(self, icon, multiplier, closure, .right)
         container?.addSubview(iconView)
         views?.append(iconView)
@@ -464,7 +464,7 @@ extension ASTextField {
     }
     
     @discardableResult
-    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+    public func setRightIcon(_ imageOn: Any?, _ imageOff: Any?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, closure, .right)
         container?.addSubview(iconView)
         views?.append(iconView)
@@ -472,8 +472,9 @@ extension ASTextField {
         return self
     }
     
+    
     @discardableResult
-    public func setRightIcon(_ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
+    public func setRightIcon(_ imageOn: Any?, _ imageOff: Any?, _ multiplier: ASTMultiplier? = nil, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?) -> ASTextField {
         let iconView = ASTView(self, imageOn, imageOff, multiplier, defaultType, isAutoEvent, closure, .right)
         container?.addSubview(iconView)
         views?.append(iconView)

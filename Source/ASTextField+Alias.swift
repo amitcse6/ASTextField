@@ -16,5 +16,5 @@ public typealias ASTextFieldDropDownClosure = (ASTextFieldDropDown, ASTextField)
 public typealias ASTextFieldLeftIconClosure = (ASTextField, ASTextFieldIconView, ASTIsOnOrOff) -> Void
 public typealias ASTextFieldRightIconClosure = (ASTextField, ASTextFieldIconView, ASTIsOnOrOff) -> Void
 public typealias ASTextFieldIconClosure = (ASTextField, ASTextFieldIconView, ASTIsOnOrOff) -> Void
-
+public typealias ASTextFieldChildViewClosure = () -> UIView
 

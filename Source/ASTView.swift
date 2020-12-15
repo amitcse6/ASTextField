@@ -24,8 +24,10 @@ public class ASTView: UIView {
     public var container: UIView?
     public var imageView: UIImageView?
     
-    public var imageOn: UIImage?
-    public var imageOff: UIImage?
+    public var viewClosure: UIView?
+    
+    public var imageOn: Any?
+    public var imageOff: Any?
     
     public var multiplier: ASTMultiplier?
     
@@ -43,7 +45,7 @@ public class ASTView: UIView {
         setup()
     }
     
-    init(_ textField: ASTextField?, _ icon: UIImage?, _ multiplier: ASTMultiplier?, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
+    init(_ textField: ASTextField?, _ icon: Any?, _ multiplier: ASTMultiplier?, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.imageOn = icon
@@ -54,7 +56,7 @@ public class ASTView: UIView {
         setup()
     }
     
-    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
+    init(_ textField: ASTextField?, _ imageOn: Any?, _ imageOff: Any?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.iconClosure = closure
@@ -64,12 +66,13 @@ public class ASTView: UIView {
         self.imageOn = imageOn
         self.imageOff = imageOff
         self.alignType = alignType
-        self.iconHilightWithRightIconBehavior()
-        textField?.textFieldHilightWithRightIconBehavior(self.isOn)
         setup()
+        self.iconHilightWithRightIconBehavior()
+        self.viewHilightWithRightIconBehavior()
+        textField?.textFieldHilightWithRightIconBehavior(self.isOn)
     }
     
-    init(_ textField: ASTextField?, _ imageOn: UIImage?, _ imageOff: UIImage?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
+    init(_ textField: ASTextField?, _ imageOn: Any?, _ imageOff: Any?, _ multiplier: ASTMultiplier?, _ defaultType: Bool, _ isAutoEvent: Bool, _ closure: ASTextFieldIconClosure?, _ alignType: ASTAlignType = .left) {
         super.init(frame: CGRect.zero)
         self.textField = textField
         self.iconClosure = closure
@@ -80,9 +83,10 @@ public class ASTView: UIView {
         self.imageOn = imageOn
         self.imageOff = imageOff
         self.alignType = alignType
-        self.iconHilightWithRightIconBehavior()
-        textField?.textFieldHilightWithRightIconBehavior(self.isOn)
         setup()
+        self.iconHilightWithRightIconBehavior()
+        self.viewHilightWithRightIconBehavior()
+        textField?.textFieldHilightWithRightIconBehavior(self.isOn)
     }
     
     public func setup() {
@@ -115,6 +119,7 @@ public class ASTView: UIView {
         
         // MARK: - ImageView --->
         iconHilightWithRightIconBehavior()
+        viewHilightWithRightIconBehavior()
         imageView?.contentMode = .scaleAspectFit
         imageView?.backgroundColor = .clear
         // MARK: - ImageView <---
@@ -139,6 +144,9 @@ public class ASTView: UIView {
             imageView?.centerXAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerXAnchor).isActive = true
             imageView?.centerYAnchor.constraint(equalTo: container.unsafelyUnwrapped.centerYAnchor).isActive = true
             // MARK: - ImageView <---
+            
+            
+            viewHilightWithRightIconBehavior()
         } else {
             // Fallback on earlier versions
         }
@@ -150,16 +158,43 @@ extension ASTView {
         isOn.toggle()
         if isAutoEvent {
             iconHilightWithRightIconBehavior()
+            viewHilightWithRightIconBehavior()
             textField?.textFieldHilightWithRightIconBehavior(isOn)
         }
         iconClosure?(textField.unsafelyUnwrapped, self, isOn)
     }
     
     func iconHilightWithRightIconBehavior() {
+        if isAutoEvent, let imageView = imageView, let imageOn = imageOn as? UIImage, let imageOff = imageOff as? UIImage {
+            imageView.image = isOn ? imageOn : imageOff
+        }else if let imageOn = imageOn as? UIImage, let imageView = imageView {
+            imageView.image = imageOn
+        }
+    }
+    
+    func viewHilightWithRightIconBehavior() {
+        if let viewClosure = viewClosure {
+            viewClosure.removeFromSuperview()
+        }
         if isAutoEvent, let imageOn = imageOn, let imageOff = imageOff {
-            imageView?.image = isOn ? imageOn : imageOff
+            let childViewOn = (imageOn as? ASTextFieldChildViewClosure)?()
+            let childViewOff = (imageOff as? ASTextFieldChildViewClosure)?()
+            viewClosure = isOn ? childViewOn : childViewOff
         }else if let imageOn = imageOn {
-            imageView?.image = imageOn
+            let childViewOn = (imageOn as? ASTextFieldChildViewClosure)?()
+            viewClosure = childViewOn
+        }
+        if viewClosure != nil {
+            container!.addSubview(viewClosure.unsafelyUnwrapped)
+            if #available(iOS 9.0, *) {
+                viewClosure!.ast_deactivateAllConstraints()
+                viewClosure!.topAnchor.constraint(equalTo: container.unsafelyUnwrapped.topAnchor).isActive = true
+                viewClosure!.leftAnchor.constraint(equalTo: container.unsafelyUnwrapped.leftAnchor).isActive = true
+                viewClosure!.rightAnchor.constraint(equalTo: container.unsafelyUnwrapped.rightAnchor).isActive = true
+                viewClosure!.bottomAnchor.constraint(equalTo: container.unsafelyUnwrapped.bottomAnchor).isActive = true
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }
